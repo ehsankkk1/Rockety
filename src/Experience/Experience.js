@@ -6,6 +6,7 @@ import Time from "./Utils/Time.js"
 import World from './World/World.js';
 import Ground from './World/Ground.js';
 import RocketModel from './World/Rocket_model.js';
+import TreeModel from './World/tree_model.js';
 
 let instance = null
 
@@ -24,6 +25,7 @@ export default class Experience {
         this.world = new World()
         this.ground = new Ground()
         this.rocket = new RocketModel()
+        this.tree = new TreeModel()
         this.sizes.on('resize', () => {
             this.resize()
         })
@@ -43,5 +45,7 @@ export default class Experience {
         this.world.update()
         this.ground.update()
         this.rocket.update()
+        this.tree.update()
+
     }
 }

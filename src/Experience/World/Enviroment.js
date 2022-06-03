@@ -16,6 +16,9 @@ export default class Enviroment {
     update() {
         //cube.rotation.y += 0.01
     }
+
+
+    
     setSunLight()
     {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
