@@ -4,6 +4,8 @@ import Renderer from './Renderer.js';
 import Sizes from "./Utils/Sizes.js"
 import Time from "./Utils/Time.js"
 import World from './World/World.js';
+import Ground from './World/Ground.js';
+import RocketModel from './World/Rocket_model.js';
 
 let instance = null
 
@@ -20,6 +22,8 @@ export default class Experience {
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
+        this.ground = new Ground()
+        this.rocket = new RocketModel()
         this.sizes.on('resize', () => {
             this.resize()
         })
@@ -37,5 +41,7 @@ export default class Experience {
         this.camera.update()
         this.renderer.update()
         this.world.update()
+        this.ground.update()
+        this.rocket.update()
     }
 }
