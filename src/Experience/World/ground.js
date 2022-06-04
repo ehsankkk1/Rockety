@@ -9,12 +9,13 @@ export default class Ground {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.Ground()
+        //this.Floor()
     }
     update() {
 
     }
     Ground() {
-        const groundGeo = new THREE.PlaneGeometry(10000, 10000);
+        const groundGeo = new THREE.PlaneGeometry(10, 10);
         const groundMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
         groundMat.color.setHSL(0.095, 1, 0.75);
 

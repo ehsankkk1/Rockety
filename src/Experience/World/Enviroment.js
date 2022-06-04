@@ -11,8 +11,8 @@ export default class Enviroment {
 
         this.resources = this.experience.resources
         this.debug = this.experience.debug
-        //this.setSunLight()
-        this.light()
+        this.setSunLight()
+        //this.light()
         this.skydome()
 
 
