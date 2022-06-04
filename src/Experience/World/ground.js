@@ -8,8 +8,8 @@ export default class Ground {
         console.log('Ground')
         this.experience = new Experience()
         this.scene = this.experience.scene
-        this.Ground()
-        //this.Floor()
+        //this.Ground()
+        this.Floor()
     }
     update() {
 
