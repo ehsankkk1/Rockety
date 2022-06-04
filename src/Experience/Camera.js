@@ -16,7 +16,7 @@ export default class Camere {
             0.1,
             100000
         )
-        this.instance.position.set(0,2, 5)
+        this.instance.position.set(0,2, 20)
         this.scene.add(this.instance)
     }
     resize() {
@@ -24,6 +24,6 @@ export default class Camere {
         this.instance.updateProjectionMatrix()
     }
     update() {
-
+        
     }
 }

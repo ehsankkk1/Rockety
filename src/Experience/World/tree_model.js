@@ -22,10 +22,10 @@ export default class TreeModel {
 
         // Tree Model 
         gltfLoader.load(
-            '/models/Tree/scene.gltf',
+            '/models/GreenTree/scene.gltf',
             (gltf) => {
 
-                gltf.scene.scale.set(0.001, 0.001, 0.001)
+                gltf.scene.scale.set(0.08, 0.08, 0.08)
                 tree = gltf.scene
                 tree.position.x = 1
                 this.scene.add(tree)
