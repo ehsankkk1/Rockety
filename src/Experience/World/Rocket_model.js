@@ -39,7 +39,7 @@ export default class RocketModel {
     }
     update() {
 
-        // rocket.position.y += 0.5;
-        // this.camera.instance.position.y +=  0.5;
+        //rocket.position.y += 0.1;
+        //this.camera.instance.position.y +=  0.1;
     }
 }

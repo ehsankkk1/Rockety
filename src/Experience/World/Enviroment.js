@@ -1,19 +1,21 @@
 import * as THREE from 'three'
 import Experience from "../Experience.js";
 import StarrySkyShader from './StarrySkyShader.js';
-
+import { Sky } from 'three/examples/jsm/objects/Sky.js';
 
 
 export default class Enviroment {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
-
+        this.renderer = this.experience.renderer
         this.resources = this.experience.resources
         this.debug = this.experience.debug
             //this.setSunLight()
+
         this.light()
         this.skydome()
+            //this.skyshader()
 
 
 
@@ -21,10 +23,40 @@ export default class Enviroment {
     update() {
         //cube.rotation.y += 0.01
     }
+    skyshader() {
+        const sun = new THREE.Vector3(0, 0, 0);
+        const sky = new Sky()
+        sky.scale.setScalar(450000);
+        this.scene.add(sky)
+        const effectController = {
+            turbidity: 10,
+            rayleigh: 3,
+            mieCoefficient: 0.005,
+            mieDirectionalG: 0.7,
+            elevation: 5,
+            azimuth: -90,
+            exposure: this.renderer.toneMappingExposure,
+        };
+        const uniforms = sky.material.uniforms;
+        uniforms['turbidity'].value = effectController.turbidity;
+        uniforms['rayleigh'].value = effectController.rayleigh;
+        uniforms['mieCoefficient'].value = effectController.mieCoefficient;
+        uniforms['mieDirectionalG'].value = effectController.mieDirectionalG;
+
+        const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
+        const theta = THREE.MathUtils.degToRad(effectController.azimuth);
+
+        sun.setFromSphericalCoords(1, phi, theta);
+
+        uniforms['sunPosition'].value.copy(sun);
+
+        this.renderer.toneMappingExposure = effectController.exposure;
+
+    }
     light() {
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(-1, 1.75, 1);
+        dirLight.position.set(-1, 1, 1);
         dirLight.position.multiplyScalar(30);
         this.scene.add(dirLight);
 
@@ -67,8 +99,6 @@ export default class Enviroment {
         var skyDome = new THREE.Mesh(sphereGeometry, sphereMaterial);
         this.scene.add(skyDome);
     }
-
-
 
     setSunLight() {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
