@@ -27,17 +27,39 @@ export default class Ground {
     }
     Floor() {
         const textureLoader = new THREE.TextureLoader()
-        const texture = textureLoader.load('../ss.jpg')
-        texture.repeat.x = 50
-        texture.repeat.y = 50
-        texture.wrapS = THREE.RepeatWrapping
-        texture.wrapT = THREE.RepeatWrapping
+        const grassColorTexture = textureLoader.load('../textures/grass/color.jpg')
+        const grassAmbientOcclusionTexture = textureLoader.load('../textures/grass/ambientOcclusion.jpg')
+        const grassNormalTexture = textureLoader.load('../textures/grass/normal.jpg')
+        const grassRoughnessTexture = textureLoader.load('../textures/grass/roughness.jpg')
+
+        grassColorTexture.repeat.set(30, 30)
+        grassAmbientOcclusionTexture.repeat.set(30, 30)
+        grassNormalTexture.repeat.set(30, 30)
+        grassRoughnessTexture.repeat.set(30, 30)
+
+        grassColorTexture.wrapS = THREE.RepeatWrapping
+        grassAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping
+        grassNormalTexture.wrapS = THREE.RepeatWrapping
+        grassRoughnessTexture.wrapS = THREE.RepeatWrapping
+
+        grassColorTexture.wrapT = THREE.RepeatWrapping
+        grassAmbientOcclusionTexture.wrapT = THREE.RepeatWrapping
+        grassNormalTexture.wrapT = THREE.RepeatWrapping
+        grassRoughnessTexture.wrapT = THREE.RepeatWrapping
+
         const floor = new THREE.Mesh(
-            new THREE.PlaneGeometry(100, 100),
-            new THREE.MeshBasicMaterial({ map: texture })
+            new THREE.RingGeometry(0, 100, 30, 30),
+            new THREE.MeshStandardMaterial({
+                map: grassColorTexture,
+                aoMap: grassAmbientOcclusionTexture,
+                normalMap: grassNormalTexture,
+                roughnessMap: grassRoughnessTexture
+            })
         )
+
         floor.receiveShadow = true
         floor.rotation.x = -Math.PI * 0.5
+        floor.position.y = 0
         this.scene.add(floor)
     }
 }

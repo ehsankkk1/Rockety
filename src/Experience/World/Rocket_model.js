@@ -29,7 +29,7 @@ export default class RocketModel {
             '/models/try/rocket.gltf',
             (gltf) => {
 
-                //gltf.scene.scale.set(1, 1, 1)
+                gltf.scene.scale.set(2, 2, 2)
                 rocket = gltf.scene
                 this.scene.add(rocket)
 
