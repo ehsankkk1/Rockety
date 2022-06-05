@@ -40,14 +40,10 @@ export default class Enviroment {
         uniforms[ 'rayleigh' ].value = effectController.rayleigh;
         uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient;
         uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG;
-
         const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation );
         const theta = THREE.MathUtils.degToRad( effectController.azimuth );
-
         sun.setFromSphericalCoords( 1, phi, theta );
-
         uniforms[ 'sunPosition' ].value.copy( sun );
-
         this.renderer.toneMappingExposure = effectController.exposure;
         
     }
