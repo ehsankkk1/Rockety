@@ -29,11 +29,7 @@ export default class RocketModel {
             '/models/rocket/scene.gltf',
             (gltf) => {
 
-<<<<<<< HEAD
-                gltf.scene.scale.set(0.04, 0.04, 0.04)
-=======
-                gltf.scene.scale.set(2, 2, 2)
->>>>>>> b39322682586c5ea715c657bf4bdec340e9ac559
+                gltf.scene.scale.set(0.05, 0.05, 0.05)
                 rocket = gltf.scene
                 this.scene.add(rocket)
 

@@ -38,16 +38,6 @@ export default class Enviroment {
             exposure: this.renderer.toneMappingExposure,
         };
         const uniforms = sky.material.uniforms;
-<<<<<<< HEAD
-        uniforms[ 'turbidity' ].value = effectController.turbidity;
-        uniforms[ 'rayleigh' ].value = effectController.rayleigh;
-        uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient;
-        uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG;
-        const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation );
-        const theta = THREE.MathUtils.degToRad( effectController.azimuth );
-        sun.setFromSphericalCoords( 1, phi, theta );
-        uniforms[ 'sunPosition' ].value.copy( sun );
-=======
         uniforms['turbidity'].value = effectController.turbidity;
         uniforms['rayleigh'].value = effectController.rayleigh;
         uniforms['mieCoefficient'].value = effectController.mieCoefficient;
@@ -60,7 +50,6 @@ export default class Enviroment {
 
         uniforms['sunPosition'].value.copy(sun);
 
->>>>>>> b39322682586c5ea715c657bf4bdec340e9ac559
         this.renderer.toneMappingExposure = effectController.exposure;
 
     }
