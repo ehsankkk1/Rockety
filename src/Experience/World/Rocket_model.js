@@ -3,7 +3,6 @@ import Experience from "../Experience";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-
 let rocket;
 export default class RocketModel {
 
@@ -29,7 +28,7 @@ export default class RocketModel {
             '/models/rocket/scene.gltf',
             (gltf) => {
 
-                gltf.scene.scale.set(0.05, 0.05, 0.05)
+                gltf.scene.scale.set(0.08, 0.08, 0.08)
                 rocket = gltf.scene
                 this.scene.add(rocket)
 
@@ -42,4 +41,4 @@ export default class RocketModel {
         //rocket.position.y += 0.1;
         //this.camera.instance.position.y +=  0.1;
     }
-}
+  }

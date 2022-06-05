@@ -16,7 +16,8 @@ export default class Camere {
             0.1,
             10000
         )
-        this.instance.position.set(0, 2, 10)
+        this.instance.position.set(0, 15, 15)
+        this.instance.rotateX(-0.7)
         this.scene.add(this.instance)
     }
     resize() {
