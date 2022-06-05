@@ -11,12 +11,12 @@ export default class Camere {
     }
     setInstance() {
         this.instance = new THREE.PerspectiveCamera(
-            75,
+            60,
             this.sizes.width / this.sizes.height,
             0.1,
-            100000
+            10000
         )
-        this.instance.position.set(0,2, 20)
+        this.instance.position.set(0, 1, 5)
         this.scene.add(this.instance)
     }
     resize() {
@@ -24,6 +24,6 @@ export default class Camere {
         this.instance.updateProjectionMatrix()
     }
     update() {
-        
+
     }
 }
