@@ -6,7 +6,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 export default class TreeModel {
 
 
-    constructor() {
+    constructor(x, z) {
         console.log('TreeModel constructor')
         this.experience = new Experience()
         this.scene = this.experience.scene
@@ -25,9 +25,10 @@ export default class TreeModel {
             '/models/GreenTree/scene.gltf',
             (gltf) => {
 
-                gltf.scene.scale.set(0.08, 0.08, 0.08)
+                gltf.scene.scale.set(0.3, 0.3, 0.3)
                 tree = gltf.scene
-                tree.position.x = 1
+                tree.position.x = x
+                tree.position.z = z
                 this.scene.add(tree)
 
             }

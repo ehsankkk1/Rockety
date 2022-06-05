@@ -7,7 +7,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 let rocket;
 export default class RocketModel {
 
-    
+
     constructor() {
         console.log('RocketModel constructor')
         this.experience = new Experience()
@@ -22,14 +22,18 @@ export default class RocketModel {
         gltfLoader.setDRACOLoader(dracoLoader)
 
         rocket = new THREE.Object3D();
-        
+
 
         // Rocket Model 
         gltfLoader.load(
             '/models/rocket/scene.gltf',
             (gltf) => {
 
+<<<<<<< HEAD
                 gltf.scene.scale.set(0.04, 0.04, 0.04)
+=======
+                gltf.scene.scale.set(2, 2, 2)
+>>>>>>> b39322682586c5ea715c657bf4bdec340e9ac559
                 rocket = gltf.scene
                 this.scene.add(rocket)
 
@@ -38,7 +42,7 @@ export default class RocketModel {
 
     }
     update() {
-        
+
         //rocket.position.y += 0.1;
         //this.camera.instance.position.y +=  0.1;
     }

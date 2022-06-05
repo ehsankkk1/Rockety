@@ -11,9 +11,11 @@ export default class Enviroment {
         this.renderer = this.experience.renderer
         this.resources = this.experience.resources
         this.debug = this.experience.debug
+            //this.setSunLight()
+
         this.light()
         this.skydome()
-    //this.skyshader()
+            //this.skyshader()
 
 
 
@@ -22,9 +24,9 @@ export default class Enviroment {
         //cube.rotation.y += 0.01
     }
     skyshader() {
-        const sun  = new THREE.Vector3(0,0,0);
+        const sun = new THREE.Vector3(0, 0, 0);
         const sky = new Sky()
-        sky.scale.setScalar( 450000 );
+        sky.scale.setScalar(450000);
         this.scene.add(sky)
         const effectController = {
             turbidity: 10,
@@ -36,6 +38,7 @@ export default class Enviroment {
             exposure: this.renderer.toneMappingExposure,
         };
         const uniforms = sky.material.uniforms;
+<<<<<<< HEAD
         uniforms[ 'turbidity' ].value = effectController.turbidity;
         uniforms[ 'rayleigh' ].value = effectController.rayleigh;
         uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient;
@@ -44,13 +47,27 @@ export default class Enviroment {
         const theta = THREE.MathUtils.degToRad( effectController.azimuth );
         sun.setFromSphericalCoords( 1, phi, theta );
         uniforms[ 'sunPosition' ].value.copy( sun );
+=======
+        uniforms['turbidity'].value = effectController.turbidity;
+        uniforms['rayleigh'].value = effectController.rayleigh;
+        uniforms['mieCoefficient'].value = effectController.mieCoefficient;
+        uniforms['mieDirectionalG'].value = effectController.mieDirectionalG;
+
+        const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
+        const theta = THREE.MathUtils.degToRad(effectController.azimuth);
+
+        sun.setFromSphericalCoords(1, phi, theta);
+
+        uniforms['sunPosition'].value.copy(sun);
+
+>>>>>>> b39322682586c5ea715c657bf4bdec340e9ac559
         this.renderer.toneMappingExposure = effectController.exposure;
-        
+
     }
     light() {
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(- 1, 1, 1);
+        dirLight.position.set(-1, 1, 1);
         dirLight.position.multiplyScalar(30);
         this.scene.add(dirLight);
 
@@ -61,13 +78,13 @@ export default class Enviroment {
 
         const d = 50;
 
-        dirLight.shadow.camera.left = - d;
+        dirLight.shadow.camera.left = -d;
         dirLight.shadow.camera.right = d;
         dirLight.shadow.camera.top = d;
-        dirLight.shadow.camera.bottom = - d;
+        dirLight.shadow.camera.bottom = -d;
 
         dirLight.shadow.camera.far = 3500;
-        dirLight.shadow.bias = - 0.0001;
+        dirLight.shadow.bias = -0.0001;
 
         const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
         this.scene.add(dirLightHelper);
@@ -94,4 +111,20 @@ export default class Enviroment {
         this.scene.add(skyDome);
     }
 
+    setSunLight() {
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
+        this.scene.add(ambientLight)
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6)
+        directionalLight.castShadow = true
+        directionalLight.shadow.mapSize.set(1024, 1024)
+        directionalLight.shadow.camera.far = 15
+        directionalLight.shadow.camera.left = -7
+        directionalLight.shadow.camera.top = 7
+        directionalLight.shadow.camera.right = 7
+        directionalLight.shadow.camera.bottom = -7
+        directionalLight.position.set(-5, 5, 0)
+        this.scene.add(directionalLight)
+
+    }
 }
