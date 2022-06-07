@@ -21,6 +21,7 @@ export default class Experience {
         this.time = new Time();
         this.scene = new THREE.Scene()
         this.camera = new Camera()
+
         this.renderer = new Renderer()
         this.world = new World()
         this.ground = new Ground()
@@ -50,6 +51,7 @@ export default class Experience {
         this.ground.update()
         this.rocket.update()
         this.tree.update()
+
 
     }
 }
