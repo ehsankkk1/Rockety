@@ -6,7 +6,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 let rocket, fire;
 let mixer=null;
 export default class RocketModel {
-
+    
 
     constructor() {
 

@@ -21,6 +21,7 @@
         "raw-loader": "^4.0.2",
         "style-loader": "^3.3.1",
         "three": "^0.134.0",
+        "three-dat.gui": "^2.0.7",
         "three-particle-fire": "^0.0.0",
         "three-sky": "^1.1.3",
         "webpack": "^5.60.0",

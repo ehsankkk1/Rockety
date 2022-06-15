@@ -19,7 +19,7 @@ export default class Camere {
             0.1,
             10000
         )
-        this.instance.position.set(0, 5, 10)
+        this.instance.position.set(0, 5, 15)
         
         this.scene.add(this.instance)
     }

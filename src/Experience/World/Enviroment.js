@@ -2,8 +2,6 @@ import * as THREE from 'three'
 import Experience from "../Experience.js";
 import StarrySkyShader from './StarrySkyShader.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
-
-
 export default class Enviroment {
     constructor() {
         this.experience = new Experience()
@@ -26,12 +24,12 @@ export default class Enviroment {
         const sky = new Sky()
         sky.scale.setScalar(450000);
         this.scene.add(sky)
-        const effectController = {
+        let effectController = {
             turbidity: 10,
             rayleigh: 3,
             mieCoefficient: 0.005,
             mieDirectionalG: 0.7,
-            elevation: 5,
+            elevation:5,
             azimuth: -90,
             exposure: this.renderer.toneMappingExposure,
         };
@@ -40,16 +38,12 @@ export default class Enviroment {
         uniforms['rayleigh'].value = effectController.rayleigh;
         uniforms['mieCoefficient'].value = effectController.mieCoefficient;
         uniforms['mieDirectionalG'].value = effectController.mieDirectionalG;
-
         const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
         const theta = THREE.MathUtils.degToRad(effectController.azimuth);
-
         sun.setFromSphericalCoords(1, phi, theta);
-
         uniforms['sunPosition'].value.copy(sun);
-
         this.renderer.toneMappingExposure = effectController.exposure;
-
+     
     }
     light() {
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
