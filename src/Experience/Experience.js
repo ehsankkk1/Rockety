@@ -27,12 +27,9 @@ export default class Experience {
         this.world = new World()
         this.ground = new Ground()
         this.rocket = new RocketModel()
+      
         this.screen2 = new ValueScreen()
-        this.tree = new TreeModel(8, 0)
-        this.tree1 = new TreeModel(14, -8)
-        this.tree2 = new TreeModel(-9, 0)
-        this.tree3 = new TreeModel(-19, -8)
-        this.tree4 = new TreeModel(-27, 10)
+        this.tree = new TreeModel()
         this.sizes.on('resize', () => {
             this.resize()
         })
@@ -49,6 +46,7 @@ export default class Experience {
     update() {
         
         this.camera.update()
+ 
         this.renderer.update()
         this.world.update()
         this.ground.update()

@@ -6,8 +6,15 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 export default class TreeModel {
 
 
-    constructor(x, z) {
-        console.log('TreeModel constructor')
+    constructor() {
+        for(let i=0;i<70;i++) {
+            this.loadTree((Math.random()* 70),(Math.random() *-70)-5);
+            this.loadTree((Math.random()* -70),(Math.random() *-70-5));
+   
+        }
+
+    }
+    loadTree(x, z){
         this.experience = new Experience()
         this.scene = this.experience.scene
 
@@ -33,7 +40,6 @@ export default class TreeModel {
 
             }
         )
-
     }
     update() {
 

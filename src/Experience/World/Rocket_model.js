@@ -60,13 +60,14 @@ export default class RocketModel {
             '/models/fire/scene.gltf',
             (gltf) => {
 
-                //gltf.scene.scale.set(1, 1, 1)
+                gltf.scene.scale.set(0.7, 0.7, 0.7)
 
                 fire = gltf.scene
                 mixer = new THREE.AnimationMixer(gltf.scene)
 
-                fire.position.x = 2
-                fire.position.y = 4
+                fire.position.x = 0
+                fire.position.y = -1.5
+                fire.rotation.x = Math.PI;
             
                 
                 // Animation
@@ -100,6 +101,7 @@ export default class RocketModel {
                        platform = gltf.scene
                        platform.position.x = -9.5
                        platform.position.z = 2
+                       platform.rotation.y = 1*Math.PI/180;
                        this.scene.add(platform)
        
                    }
