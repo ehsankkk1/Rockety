@@ -3,10 +3,10 @@ import Experience from "../Experience";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-let rocket, fire,platform;
-let mixer=null;
+let rocket, fire, platform;
+let mixer = null;
 export default class RocketModel {
-    
+
 
     constructor() {
 
@@ -43,6 +43,8 @@ export default class RocketModel {
         )
     }
 
+    // rocket.position.y += 0.5;
+    // this.camera.instance.position.y += 0.5;
     loadFire() {
         // Rocket loader
         const dracoLoader = new DRACOLoader()
@@ -55,7 +57,7 @@ export default class RocketModel {
 
 
         // Rocket Model 
-        
+
         gltfLoader.load(
             '/models/fire/scene.gltf',
             (gltf) => {
@@ -71,10 +73,10 @@ export default class RocketModel {
             
                 
                 // Animation
-                
-                
+
+
                 const action = mixer.clipAction(gltf.animations[0])
-                action.setLoop( THREE.LoopRepeat );
+                action.setLoop(THREE.LoopRepeat);
                 action.play()
                 this.scene.add(fire)
 
@@ -110,9 +112,9 @@ export default class RocketModel {
 
     update() {
         if (mixer != null) {
-         mixer.update(this.time.delta)   
-        } 
-        
+            mixer.update(this.time.delta)
+        }
+
         //rocket.position.y += 0.1;
         //this.camera.instance.position.y +=  0.1;
     }

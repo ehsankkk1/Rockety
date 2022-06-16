@@ -7,6 +7,8 @@ import World from './World/World.js';
 import Ground from './World/Ground.js';
 import RocketModel from './World/Rocket_model.js';
 import TreeModel from './World/tree_model.js';
+import Fire from './World/Fire.js';
+import Earth from './World/Earth.js';
 import ValueScreen from './World/value_screen.js';
 
 let instance = null
@@ -44,7 +46,7 @@ export default class Experience {
         this.renderer.resize()
     }
     update() {
-        
+
         this.camera.update()
  
         this.renderer.update()
