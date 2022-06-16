@@ -8,7 +8,6 @@ export default class ValueScreen {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
-        this.environment = new Environment()
 
         text ={
             element: document.querySelector('.text')

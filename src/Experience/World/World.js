@@ -7,7 +7,6 @@
         constructor() {
             this.experience = new Experience()
             this.scene = this.experience.scene
-            this.environment = new Environment()
             const geometry = new THREE.BoxBufferGeometry(2, 1, 1)
             const material = new THREE.MeshBasicMaterial({ color: 0xff00ff })
             cube = new THREE.Mesh(geometry, material)
