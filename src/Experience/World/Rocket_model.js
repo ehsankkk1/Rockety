@@ -3,7 +3,7 @@ import Experience from "../Experience";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-let rocket, fire, platform;
+let rocket, fire, platform,pad;
 let mixer = null;
 export default class RocketModel {
 
@@ -18,6 +18,7 @@ export default class RocketModel {
         this.loadRocket()
         this.loadFire()
         this.loadPlatform()
+        this.loadPad()
     }
     loadRocket() {
         // Rocket loader
@@ -91,7 +92,7 @@ export default class RocketModel {
                const gltfLoader = new GLTFLoader()
                gltfLoader.setDRACOLoader(dracoLoader)
        
-               rocket = new THREE.Object3D();
+               platform = new THREE.Object3D();
        
        
                // platform Model 
@@ -109,6 +110,32 @@ export default class RocketModel {
                    }
                )
     }
+    loadPad(){
+        // pad loader
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath('/draco/')
+
+        const gltfLoader = new GLTFLoader()
+        gltfLoader.setDRACOLoader(dracoLoader)
+
+        pad = new THREE.Object3D();
+
+
+        // pad Model 
+        gltfLoader.load(
+            '/models/landing_pad/scene.gltf',
+            (gltf) => {
+
+                gltf.scene.scale.set(8, 8, 8)
+                pad = gltf.scene
+                pad.position.x =0
+                pad.position.z = 0
+                pad.rotation.y = 1*Math.PI/180;
+                this.scene.add(pad)
+
+            }
+        )
+}
 
     update() {
         if (mixer != null) {

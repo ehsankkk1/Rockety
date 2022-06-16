@@ -46,8 +46,8 @@ export default class Enviroment {
      
     }
     light() {
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-        dirLight.color.setHSL(0.1, 1, 0.95);
+        const dirLight = new THREE.DirectionalLight(0xfffffff, 0.85);
+        dirLight.color.setHSL(0.1,1, 0.8);
         dirLight.position.set(-1, 1, 1);
         dirLight.position.multiplyScalar(30);
         this.scene.add(dirLight);
