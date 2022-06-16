@@ -7,6 +7,8 @@ import World from './World/World.js';
 import Ground from './World/Ground.js';
 import RocketModel from './World/Rocket_model.js';
 import TreeModel from './World/tree_model.js';
+import Fire from './World/Fire.js';
+import Earth from './World/Earth.js';
 
 let instance = null
 
@@ -30,6 +32,7 @@ export default class Experience {
         this.tree2 = new TreeModel(-9, 0)
         this.tree3 = new TreeModel(-19, -8)
         this.tree4 = new TreeModel(-27, 10)
+        this.earth = new Earth()
         this.sizes.on('resize', () => {
             this.resize()
         })

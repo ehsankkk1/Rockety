@@ -26,20 +26,21 @@ export default class RocketModel {
 
         // Rocket Model 
         gltfLoader.load(
-            '/models/rocket/scene.gltf',
-            (gltf) => {
+                '/models/rocket/scene.gltf',
+                (gltf) => {
 
-                gltf.scene.scale.set(0.05, 0.05, 0.05)
-                rocket = gltf.scene
-                this.scene.add(rocket)
+                    gltf.scene.scale.set(0.05, 0.05, 0.05)
+                    rocket = gltf.scene
+                    this.scene.add(rocket)
 
-            }
-        )
+                }
 
+            )
+            //rocket.position.y = 5
     }
     update() {
 
-        //rocket.position.y += 0.1;
-        //this.camera.instance.position.y +=  0.1;
+        // rocket.position.y += 0.5;
+        // this.camera.instance.position.y += 0.5;
     }
 }
