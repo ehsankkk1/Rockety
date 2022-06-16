@@ -9,6 +9,7 @@ import RocketModel from './World/Rocket_model.js';
 import TreeModel from './World/tree_model.js';
 import Fire from './World/Fire.js';
 import Earth from './World/Earth.js';
+import ValueScreen from './World/value_screen.js';
 
 let instance = null
 
@@ -23,10 +24,12 @@ export default class Experience {
         this.time = new Time();
         this.scene = new THREE.Scene()
         this.camera = new Camera()
+
         this.renderer = new Renderer()
         this.world = new World()
         this.ground = new Ground()
         this.rocket = new RocketModel()
+        this.screen2 = new ValueScreen()
         this.tree = new TreeModel(8, 0)
         this.tree1 = new TreeModel(14, -8)
         this.tree2 = new TreeModel(-9, 0)
@@ -47,12 +50,14 @@ export default class Experience {
         this.renderer.resize()
     }
     update() {
+
         this.camera.update()
         this.renderer.update()
         this.world.update()
         this.ground.update()
         this.rocket.update()
         this.tree.update()
+        this.screen2.update()
 
     }
 }

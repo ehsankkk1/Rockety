@@ -2,8 +2,6 @@ import * as THREE from 'three'
 import Experience from "../Experience.js";
 import StarrySkyShader from './StarrySkyShader.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
-
-
 export default class Enviroment {
     constructor() {
         this.experience = new Experience()
@@ -11,12 +9,10 @@ export default class Enviroment {
         this.renderer = this.experience.renderer
         this.resources = this.experience.resources
         this.debug = this.experience.debug
-            //this.setSunLight()
 
         this.light()
-        this.skydome()
-            //this.skyshader()
-
+        //this.skydome()
+        this.skyshader()
 
 
     }
@@ -28,12 +24,12 @@ export default class Enviroment {
         const sky = new Sky()
         sky.scale.setScalar(450000);
         this.scene.add(sky)
-        const effectController = {
+        let effectController = {
             turbidity: 10,
             rayleigh: 3,
             mieCoefficient: 0.005,
             mieDirectionalG: 0.7,
-            elevation: 5,
+            elevation:5,
             azimuth: -90,
             exposure: this.renderer.toneMappingExposure,
         };
@@ -42,16 +38,12 @@ export default class Enviroment {
         uniforms['rayleigh'].value = effectController.rayleigh;
         uniforms['mieCoefficient'].value = effectController.mieCoefficient;
         uniforms['mieDirectionalG'].value = effectController.mieDirectionalG;
-
         const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
         const theta = THREE.MathUtils.degToRad(effectController.azimuth);
-
         sun.setFromSphericalCoords(1, phi, theta);
-
         uniforms['sunPosition'].value.copy(sun);
-
         this.renderer.toneMappingExposure = effectController.exposure;
-
+     
     }
     light() {
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -100,20 +92,4 @@ export default class Enviroment {
         this.scene.add(skyDome);
     }
 
-    setSunLight() {
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
-        this.scene.add(ambientLight)
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6)
-        directionalLight.castShadow = true
-        directionalLight.shadow.mapSize.set(1024, 1024)
-        directionalLight.shadow.camera.far = 15
-        directionalLight.shadow.camera.left = -7
-        directionalLight.shadow.camera.top = 7
-        directionalLight.shadow.camera.right = 7
-        directionalLight.shadow.camera.bottom = -7
-        directionalLight.position.set(-5, 5, 0)
-        this.scene.add(directionalLight)
-
-    }
 }

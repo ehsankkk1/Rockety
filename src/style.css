@@ -14,3 +14,20 @@ body {
     left: 0;
     outline: none;
 }
+
+ .text {
+    position: absolute;
+    top: 85%;
+    right: 1%;
+    width: 200px;
+    padding: 20px;
+    border-radius: 4px;
+    background: #000000bf;
+    border: 1px solid #ffffff77;
+    color: #ffffff;
+    line-height: 1.3em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    transition: opacity 0.3s;
+ }

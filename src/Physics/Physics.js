@@ -17,72 +17,72 @@ export default class Physics {
  *
  */
 //The rocket that is going to be used for the launch has the following properties:
-const rocket = {
-    structural_mass: 137000,
-    fuel_mass: 330000, //kg    
-    payload_mass: 140.000,
-    diameter: 10.1, //m
-    height: 110.6, //m
-    velocity: new Vector3(0, 0, 0),
-    position: new Vector3(0, 0, 0),
-    acceleration: new Vector3(0, 0, 0),
-    angle: 0,
-    torque: 0,
-    angularVelocity: 0,
-    A: 10.0, //m^2 Reference area or cross sectional area (of the front of the rocket)
-    drag_coefficient: 0.447, //drag coefficient//  0.237 to 0.447
-    lift_coefficient: 1.1,
+// const rocket = {
+//     structural_mass: 137000,
+//     fuel_mass: 330000, //kg    
+//     payload_mass: 140.000,
+//     diameter: 10.1, //m
+//     height: 110.6, //m
+//     velocity: new Vector3(0, 0, 0),
+//     position: new Vector3(0, 0, 0),
+//     acceleration: new Vector3(0, 0, 0),
+//     angle: 0,
+//     torque: 0,
+//     angularVelocity: 0,
+//     A: 10.0, //m^2 Reference area or cross sectional area (of the front of the rocket)
+//     drag_coefficient: 0.447, //drag coefficient//  0.237 to 0.447
+//     lift_coefficient: 1.1,
 
-}
+// }
 const thrust = {
-    exhaust_velocity: new Vector3(0, 3200, 0), //2.1 to 3.2 km/s  for solid propellants
-    thrust_time: 0.1,
-    burn_rate: 12890, // kg per sec
-    rho: 0.7, //Density 
-    A: 8, // nozzle throat area
-    Ae: 4.55, //m^2  nozzle exit area
-    pt: 680000, // pascal  (pressure inside burning room)
-    pe: 100000 // pressure on the exit nozzle / between 0.1 and 0.2
+        exhaust_velocity: new Vector3(0, 3200, 0), //2.1 to 3.2 km/s  for solid propellants
+        thrust_time: 0.1,
+        burn_rate: 12890, // kg per sec
+        rho: 0.7, //Density 
+        A: 8, // nozzle throat area
+        Ae: 4.55, //m^2  nozzle exit area
+        pt: 680000, // pascal  (pressure inside burning room)
+        pe: 100000 // pressure on the exit nozzle / between 0.1 and 0.2
 
 
-}
-const earth = {
-
-    gravity_on_surface: new Vector3(0, 9.82, 0), //gravitational acceleration
-    radius: 6378100.0, //meters 
-    G: 6.67 * 10 ^ -11, //Universal Gravitation constant in n*m^2/kg^2
-    mass: 5.98 * 10 ^ 24, // kilograms
-
-}
-const pressure = {
-    P0: 101325, //Pascal Pressure at time 0
-    currentPressure: 100000.0,
-    R: 8.3144621, // Joules/Kelvin*Mole 
-    M: 0.02896 // kg/mole
-
-}
-const temprature = {
-        lapse_rate: 0.0065, // K/m
-        T0: 288.0, //Kelvin  Temperature at time 0
-        current_temprature: 0
     }
-    /*GUI
-     *
-     */
-const gui = new dat.GUI()
-gui.add(thrust, "burn_rate", 12890, 15000).onFinishChange(function(value) {
-    rocket.burn_rate = value;
-    console.log(rocket.burn_rate)
-});
-gui.add(rocket, "payload_mass", 1200, 12500).onFinishChange(function(value) {
-    rocket.payload_mass = value;
-    console.log(rocket.payload_mass)
-});
+    // const earth = {
 
-gui.add(thrust, "thrust_time").onFinishChange(function(value) {
-    thrust.thrust_time = value;
-    console.log(thrust.thrust_time)
-});
+//     gravity_on_surface: new Vector3(0, 9.82, 0), //gravitational acceleration
+//     radius: 6378100.0, //meters 
+//     G: 6.67 * 10 ^ -11, //Universal Gravitation constant in n*m^2/kg^2
+//     mass: 5.98 * 10 ^ 24, // kilograms
+
+// }
+// const pressure = {
+//     P0: 101325, //Pascal Pressure at time 0
+//     currentPressure: 100000.0,
+//     R: 8.3144621, // Joules/Kelvin*Mole 
+//     M: 0.02896 // kg/mole
+
+// }
+// const temprature = {
+//         lapse_rate: 0.0065, // K/m
+//         T0: 288.0, //Kelvin  Temperature at time 0
+//         current_temprature: 0
+//     }
+/*GUI
+ *
+ */
+// const gui = new dat.GUI()
+// gui.add(thrust, "burn_rate", 12890, 15000).onFinishChange(function(value) {
+//     rocket.burn_rate = value;
+//     console.log(rocket.burn_rate)
+// });
+// gui.add(rocket, "payload_mass", 1200, 12500).onFinishChange(function(value) {
+//     rocket.payload_mass = value;
+//     console.log(rocket.payload_mass)
+// });
+
+// gui.add(thrust, "thrust_time").onFinishChange(function(value) {
+//     thrust.thrust_time = value;
+//     console.log(thrust.thrust_time)
+// });
 
 /*physic laws
  *
@@ -93,22 +93,22 @@ gui.add(thrust, "thrust_time").onFinishChange(function(value) {
 //var Ft = burn_rate*exhaust_velocity
 //var  delta_rocket_impulse = burn_rate *exhaust_velocity * dt
 
-var LiftForceChange = (velocity) => {
-    var lift = new Vector3()
-    var mult = new Vector3()
-    lift = lift.multiplyScalar(rocket.lift_coefficient * rocket.A * (0.5) * thrust.rho)
-    mult.multiplyVectors(velocity, velocity)
-    lift.multiply(mult)
-    return lift
-}
-var DragForceChange = (velocity) => {
-    var drag = new Vector3()
-    var mult = new Vector3()
-    drag = drag.multiplyScalar(rocket.drag_coefficient * rocket.A * (0.5) * thrust.rho)
-    mult.multiplyVectors(velocity, velocity)
-    drag.multiply(mult)
-    return drag
-}
+// var LiftForceChange = (velocity) => {
+//     var lift = new Vector3()
+//     var mult = new Vector3()
+//     lift = lift.multiplyScalar(rocket.lift_coefficient * rocket.A * (0.5) * thrust.rho)
+//     mult.multiplyVectors(velocity, velocity)
+//     lift.multiply(mult)
+//     return lift
+// }
+// var DragForceChange = (velocity) => {
+//     var drag = new Vector3()
+//     var mult = new Vector3()
+//     drag = drag.multiplyScalar(rocket.drag_coefficient * rocket.A * (0.5) * thrust.rho)
+//     mult.multiplyVectors(velocity, velocity)
+//     drag.multiply(mult)
+//     return drag
+// }
 var airResistanceForceChange = () => {
     //NOTE : air resistance depends on velocity so at the liftoff of the rocket there is no airResistance.
     //Returns a force magnitude in Newtons
@@ -130,26 +130,26 @@ var thrustForceChange = () => {
     return thrust_force //it varies depending on the pressure on the nozzle between 32608372 and 33100000
 }
 
-var weight_forceChange = () => {
-    var weight_force = new Vector3(0, 1, 0)
-    var dry_mass = rocket.structural_mass + rocket.payload_mass
-    var full_mass = dry_mass + rocket.fuel_mass
-    weight_force = weight_force.multiplyScalar(full_mass).multiply(earth.gravity_on_surface)
-    return weight_force
-}
-var tempratureChange = () => {
-    temprature.current_temprature = temprature.T0 - temprature.lapse_rate * rocket.height
-    return temprature.current_temprature
-}
-var gravityChange = () => {
-    let current_gravity = new Vector3(0, 1, 0)
-    const rh = (earth.radius + rocket.height) ^ 2
-    current_gravity = current_gravity.multiplyScalar(earth.G * earth.mass).divideScalar(rh)
-    return current_gravity
-}
-var pressureChange = (current_temprature) => {
-    pressure.currentPressure = pressure.P0 * (temprature.current_temprature / temprature.T0) ^ ((earth.gravity_on_surface * pressure.M) / (pressure.R * temprature.lapse_rate))
-}
+// var weight_forceChange = () => {
+//     var weight_force = new Vector3(0, 1, 0)
+//     var dry_mass = rocket.structural_mass + rocket.payload_mass
+//     var full_mass = dry_mass + rocket.fuel_mass
+//     weight_force = weight_force.multiplyScalar(full_mass).multiply(earth.gravity_on_surface)
+//     return weight_force
+// }
+// var tempratureChange = () => {
+//     temprature.current_temprature = temprature.T0 - temprature.lapse_rate * rocket.height
+//     return temprature.current_temprature
+// }
+// var gravityChange = () => {
+//     let current_gravity = new Vector3(0, 1, 0)
+//     const rh = (earth.radius + rocket.height) ^ 2
+//     current_gravity = current_gravity.multiplyScalar(earth.G * earth.mass).divideScalar(rh)
+//     return current_gravity
+// }
+// var pressureChange = (current_temprature) => {
+//     pressure.currentPressure = pressure.P0 * (temprature.current_temprature / temprature.T0) ^ ((earth.gravity_on_surface * pressure.M) / (pressure.R * temprature.lapse_rate))
+// }
 
 const dt = 0.01
 var t = 0
@@ -161,12 +161,12 @@ var t = 0
 //     t = t + dt
 // }
 
-var fuel_mass_change = () => {
-    var dm = thrust.burn_rate * dt //amount of mass lost in time dt
-    var current_fuel_mass = rocket.fuel_mass - dm
-    rocket.fuel_mass = current_fuel_mass
-    return current_fuel_mass
-}
+// var fuel_mass_change = () => {
+//     var dm = thrust.burn_rate * dt //amount of mass lost in time dt
+//     var current_fuel_mass = rocket.fuel_mass - dm
+//     rocket.fuel_mass = current_fuel_mass
+//     return current_fuel_mass
+// }
 var velocityChange = (fuel_mass) => {
     //rocket equation
     const dry_mass = rocket.structural_mass + rocket.payload_mass
