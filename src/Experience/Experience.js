@@ -10,6 +10,7 @@ import TreeModel from './World/tree_model.js';
 import Fire from './World/Fire.js';
 import Earth from './World/Earth.js';
 import ValueScreen from './World/value_screen.js';
+import Physics from '../Physics/Physics.js';
 
 let instance = null
 
@@ -36,6 +37,7 @@ export default class Experience {
         this.tree3 = new TreeModel(-19, -8)
         this.tree4 = new TreeModel(-27, 10)
         this.earth = new Earth()
+        this.physics = new Physics()
         this.sizes.on('resize', () => {
             this.resize()
         })
@@ -58,6 +60,6 @@ export default class Experience {
         this.rocket.update()
         this.tree.update()
         this.screen2.update()
-
+        this.physics.update()
     }
 }

@@ -12,18 +12,20 @@ export default class Drag {
         instance = this
         this.rocket = new Rocket()
         this.atmosphere = new Atmospheric_properties()
+        this.drag = new Vector3(0, -1, 0)
         this.DragForceChange()
 
     }
     DragForceChange() {
-        var drag = new Vector3()
-        drag = drag.multiplyScalar(
+        var drag = new Vector3(0, -1, 0)
+        this.drag = drag.multiplyScalar(
             this.rocket.drag_coefficient * this.rocket.A * (0.5) *
-            this.atmosphere.rho * this.rocket.velocity.length()
+            this.atmosphere.rho * Math.pow(this.rocket.velocity.length(), 2)
         )
-        this.drag = drag
     }
     update() {
+        this.atmosphere.update()
         this.DragForceChange()
+            //console.log(this.drag)
     }
 }

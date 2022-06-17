@@ -1,4 +1,5 @@
 import { Vector3 } from "three"
+import Thrust from "./Thrust"
 
 let instance = null
 export default class Rocket {
@@ -23,14 +24,20 @@ export default class Rocket {
         this.A = 10.0 //m^2 Reference area or cross sectional area (of the front of the rocket)
         this.drag_coefficient = 0.447 //drag coefficient//  0.237 to 0.447
         this.lift_coefficient = 1.1
+        this.thrust = new Thrust()
         this.mass_change()
     }
 
     mass_change() {
-        var dm = thrust.burn_rate * dt //amount of mass lost in time dt
-        var current_fuel_mass = this.fuel_mass - dm
-        this.fuel_mass = current_fuel_mass
-        this.full_mass = this.fuel_mass + this.structural_mass + this.payload_mass
+        if (this.fuel_mass > 0) {
+            var dm = this.thrust.burn_rate * 0.01 //amount of mass lost in time dt
+            var current_fuel_mass = this.fuel_mass - dm
+            this.fuel_mass = current_fuel_mass
+            this.full_mass = this.fuel_mass + this.structural_mass + this.payload_mass
+        } else {
+            this.full_mass = this.structural_mass + this.payload_mass
+        }
+
     }
     update() {
         this.mass_change()

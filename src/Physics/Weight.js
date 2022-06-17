@@ -10,22 +10,21 @@ export default class Weight {
         instance = this
         this.rocket = new Rocket()
         this.earth = new Earth()
-        this.weight_force = new Vector3(0, this.rocket.full * this.earth.gravity_on_surface, 0)
+        this.weight_force = new Vector3(0, -1 * this.rocket.full_mass * this.earth.gravity_on_surface.length(), 0)
         this.current_gravity = this.earth.gravity_on_surface
     }
     weight_forceChange() {
-        var weight_force = new Vector3(0, 1, 0)
-        weight_force = weight_force.multiplyScalar(this.rocket.full_mass).multiply(this.current_gravity)
-        this.weight_force = weight_force
+        var weight_force = new Vector3(0, -1, 0)
+        this.weight_force = weight_force.multiplyScalar(this.rocket.full_mass * this.current_gravity.length())
     }
     gravityChange() {
-        let current_gravity = new Vector3(0, 1, 0)
-        const rh = (this.earth.radius + this.rocket.height)
-        current_gravity = current_gravity.multiplyScalar(this.g0 * this.earth.radius).divideScalar(rh)
-        this.current_gravity = current_gravity
+        let current_gravity = new Vector3(0, -1, 0)
+        let rh = (this.earth.radius + this.rocket.height)
+        this.current_gravity = current_gravity.multiplyScalar(this.earth.gravity_on_surface.length() * this.earth.radius).divideScalar(rh)
     }
     update() {
         this.gravityChange()
         this.weight_forceChange()
+            //console.log(this.current_gravity)
     }
 }

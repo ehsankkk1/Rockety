@@ -16,12 +16,11 @@ export default class Lift {
 
     }
     LiftForceChange() {
-        var lift = new Vector3()
-        lift = lift.multiplyScalar(
+        var lift = new Vector3(-1, 0, 0)
+        this.lift = lift.multiplyScalar(
             this.rocket.lift_coefficient * this.rocket.A * (0.5) *
             this.atmosphere.rho * this.rocket.velocity.length()
         )
-        this.lift = lift
     }
     update() {
         this.LiftForceChange()
