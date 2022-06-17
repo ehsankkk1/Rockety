@@ -26,13 +26,10 @@ export default class Physics {
     }
     totalForce() {
         let T_f = new Vector3(0, 0, 0)
-        if (this.thrust.thrust_force.length() > 0) {
-            T_f.add(this.thrust.thrust_force)
-            T_f.add(this.weight.weight_force)
-            T_f.add(this.drag.drag)
-        } else {
-            T_f.add(this.weight.weight_force)
-        }
+        T_f.add(this.thrust.thrust_force)
+        T_f.add(this.weight.weight_force)
+        T_f.add(this.drag.drag)
+        T_f.add(this.lift.lift)
         this.total_force.copy(T_f)
             //console.log(this.drag.drag)
 
@@ -63,7 +60,7 @@ export default class Physics {
         this.rocket.height = this.rocket.position.y
             // console.log(this.rocket.height)
             // console.log(this.rocket.velocity.length())
-            // console.log(this.rocket.acceleration.length())
+            //console.log(this.rocket.position)
 
     }
     update() {

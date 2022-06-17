@@ -43,10 +43,12 @@ export default class Atmospheric_properties {
         this.tempratureChange()
         this.pressureChange()
         this.rho = this.currentPressure / (1718 * (this.current_temprature + 459.7))
+        this.rho = this.rho * 515.378818
     }
 
     update() {
         this.rhoChange()
+            //onsole.log(this.rho)
     }
 
 }

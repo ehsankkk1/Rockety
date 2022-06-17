@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly mountain quick build
+* source:	https://sketchfab.com/3d-models/low-poly-mountain-quick-build-97fd86c25efb42d08ca74bfa87661163
+* author:	Just.maaike (https://sketchfab.com/Just.maaike)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly mountain quick build" (https://sketchfab.com/3d-models/low-poly-mountain-quick-build-97fd86c25efb42d08ca74bfa87661163) by Just.maaike (https://sketchfab.com/Just.maaike) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

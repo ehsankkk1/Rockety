@@ -2,6 +2,8 @@ import * as THREE from 'three'
 import Experience from "../Experience.js";
 import StarrySkyShader from './StarrySkyShader.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
+
+
 export default class Enviroment {
     constructor() {
         this.experience = new Experience()
@@ -9,7 +11,7 @@ export default class Enviroment {
         this.renderer = this.experience.renderer
         this.resources = this.experience.resources
         this.debug = this.experience.debug
-
+        this.debugFolder = this.debug.ui.addFolder('skyshader')
         this.light()
         //this.skydome()
         this.skyshader()
@@ -17,9 +19,10 @@ export default class Enviroment {
 
     }
     update() {
-        //cube.rotation.y += 0.01
+        
     }
     skyshader() {
+        
         const sun = new THREE.Vector3(0, 0, 0);
         const sky = new Sky()
         sky.scale.setScalar(450000);
@@ -33,6 +36,7 @@ export default class Enviroment {
             azimuth: -90,
             exposure: this.renderer.toneMappingExposure,
         };
+        function guiChanged() {
         const uniforms = sky.material.uniforms;
         uniforms['turbidity'].value = effectController.turbidity;
         uniforms['rayleigh'].value = effectController.rayleigh;
@@ -41,13 +45,26 @@ export default class Enviroment {
         const phi = THREE.MathUtils.degToRad(90 - effectController.elevation);
         const theta = THREE.MathUtils.degToRad(effectController.azimuth);
         sun.setFromSphericalCoords(1, phi, theta);
+        
         uniforms['sunPosition'].value.copy(sun);
-        this.renderer.toneMappingExposure = effectController.exposure;
-     
+    }
+        //this.renderer.toneMappingExposure = effectController.exposure;
+        this.debugFolder.add( effectController, 'turbidity', 0.0, 20.0, 0.1 ).onChange( guiChanged );
+        this.debugFolder.add( effectController, 'rayleigh', 0.0, 4, 0.001 ).onChange( guiChanged );
+        this.debugFolder.add( effectController, 'mieCoefficient', 0.0, 0.1, 0.001 ).onChange( guiChanged );
+        this.debugFolder.add( effectController, 'mieDirectionalG', 0.0, 1, 0.001 ).onChange( guiChanged );
+        this.debugFolder.add( effectController, 'elevation', 0, 90, 0.1 ).onChange( guiChanged );
+        this.debugFolder.add( effectController, 'azimuth', - 180, 180, 0.1 ).onChange( guiChanged );
+        //this.debug.ui.add( effectController, 'exposure', 0, 1, 0.0001 ).onChange( guiChanged );
+
+        guiChanged();
+       // Debug
+       
+       
     }
     light() {
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-        dirLight.color.setHSL(0.1, 1, 0.95);
+        const dirLight = new THREE.DirectionalLight(0xfffffff, 1.5);
+        dirLight.color.setHSL(0.1,1, 0.8);
         dirLight.position.set(-1, 1, 1);
         dirLight.position.multiplyScalar(30);
         this.scene.add(dirLight);

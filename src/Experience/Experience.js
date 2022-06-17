@@ -6,11 +6,13 @@ import Time from "./Utils/Time.js"
 import World from './World/World.js';
 import Ground from './World/Ground.js';
 import RocketModel from './World/Rocket_model.js';
-import TreeModel from './World/tree_model.js';
+import NatureModel from './World/nature_model.js';
 import Fire from './World/Fire.js';
 import Earth from './World/Earth.js';
 import ValueScreen from './World/value_screen.js';
 import Physics from '../Physics/Physics.js';
+import Debug from './Utils/Debug.js';
+import Enviroment from './World/Enviroment.js';
 
 let instance = null
 
@@ -24,20 +26,17 @@ export default class Experience {
         this.sizes = new Sizes();
         this.time = new Time();
         this.scene = new THREE.Scene()
+        this.debug = new Debug()
         this.camera = new Camera()
-
         this.renderer = new Renderer()
+        this.environment = new Enviroment()
         this.world = new World()
         this.ground = new Ground()
         this.rocket = new RocketModel()
         this.screen2 = new ValueScreen()
-        this.tree = new TreeModel(8, 0)
-        this.tree1 = new TreeModel(14, -8)
-        this.tree2 = new TreeModel(-9, 0)
-        this.tree3 = new TreeModel(-19, -8)
-        this.tree4 = new TreeModel(-27, 10)
         this.earth = new Earth()
         this.physics = new Physics()
+        this.tree = new NatureModel()
         this.sizes.on('resize', () => {
             this.resize()
         })
@@ -54,6 +53,7 @@ export default class Experience {
     update() {
 
         this.camera.update()
+        this.environment.update()
         this.renderer.update()
         this.world.update()
         this.ground.update()

@@ -19,7 +19,7 @@ export default class Lift {
         var lift = new Vector3(-1, 0, 0)
         this.lift = lift.multiplyScalar(
             this.rocket.lift_coefficient * this.rocket.A * (0.5) *
-            this.atmosphere.rho * this.rocket.velocity.length()
+            this.atmosphere.rho * Math.pow(this.rocket.velocity.length(), 2)
         )
     }
     update() {
