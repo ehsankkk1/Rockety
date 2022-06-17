@@ -15,8 +15,10 @@ export default class RocketModel {
         this.camera = this.experience.camera
         this.debug = this.experience.debug
         this.time = this.experience.time
-        this.loadRocket()
+        
+
         this.loadFire()
+        this.loadRocket()
         this.loadPlatform()
         this.loadPad()
     }
@@ -44,10 +46,9 @@ export default class RocketModel {
         )
     }
 
-    // rocket.position.y += 0.5;
-    // this.camera.instance.position.y += 0.5;
+
     loadFire() {
-        // Rocket loader
+        // Fire loader
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
@@ -56,8 +57,7 @@ export default class RocketModel {
 
         fire = new THREE.Object3D();
 
-
-        // Rocket Model 
+        // Fire Model 
 
         gltfLoader.load(
             '/models/fire/scene.gltf',
@@ -83,6 +83,8 @@ export default class RocketModel {
 
             }
         )
+        
+        
     }
     loadPlatform(){
                // Platform loader
@@ -141,9 +143,10 @@ export default class RocketModel {
         if (mixer != null) {
             mixer.update(this.time.delta)
         }
-
-        //rocket.position.y += 0.1;
-        //this.camera.instance.position.y +=  0.1;
+        //rocket.position.y =50;
+        //fire.position.y =5;
+        //this.camera.instance.position.y += 0.5;
+        //this.camera.instance.position.y = 5;
     }
 
 

@@ -6,7 +6,7 @@ import Time from "./Utils/Time.js"
 import World from './World/World.js';
 import Ground from './World/Ground.js';
 import RocketModel from './World/Rocket_model.js';
-import TreeModel from './World/tree_model.js';
+import NatureModel from './World/nature_model.js';
 import Fire from './World/Fire.js';
 import Earth from './World/Earth.js';
 import ValueScreen from './World/value_screen.js';
@@ -33,7 +33,7 @@ export default class Experience {
         this.ground = new Ground()
         this.rocket = new RocketModel()
         this.screen2 = new ValueScreen()
-        this.tree = new TreeModel()
+        this.tree = new NatureModel()
         this.sizes.on('resize', () => {
             this.resize()
         })

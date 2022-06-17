@@ -3,15 +3,19 @@ import Experience from "../Experience";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-export default class TreeModel {
+export default class NatureModel {
 
 
     constructor() {
-        for(let i=0;i<35;i++) {
-            this.loadTree((Math.random()* 50)+3,(Math.random() *-50)-3);
-            this.loadTree((Math.random()* -50)-3,(Math.random() *-50)-3);
-            this.loadTree((Math.random()* -50)-3,(Math.random() *50)+3);
-            this.loadTree((Math.random()* 50)+3,(Math.random() *50)+3);
+        this.experience = new Experience()
+        this.scene = this.experience.scene
+        for(let i=0;i<50;i++) {
+            const angle = Math.random() * Math.PI * 2 // Random angle
+            const radius = 10 + Math.random() * 50  
+            const x = Math.cos(angle) * radius        // Get the x position using cosinus
+            const z = Math.sin(angle) * radius 
+            this.loadTree(x,z);
+      
 
         }
         this.loadMountain(0,-80,180)
@@ -19,11 +23,19 @@ export default class TreeModel {
         this.loadMountain(0,80,180)
         this.loadMountain(-80,0,90)
         //this.loadMountain(-50,-90)
+        for(let i=0;i<25;i++){
+            const angle = Math.random() * Math.PI * 2 // Random angle
+            const radius = 30 + Math.random() * 80  
+            const radius2  = 100 + Math.random() * 500      // Random radius
+            const x = Math.cos(angle) * radius        // Get the x position using cosinus
+            const z = Math.sin(angle) * radius // Get the z position using sinus
+            const y = radius2       
+            this.loadCloud(x,z,y)   
+        }
+        
 
     }
     loadTree(x, z){
-        this.experience = new Experience()
-        this.scene = this.experience.scene
 
         // Tree loader
         const dracoLoader = new DRACOLoader()
@@ -48,9 +60,8 @@ export default class TreeModel {
             }
         )
     }
-    loadMountain(x, z,r){
-        this.experience = new Experience()
-        this.scene = this.experience.scene
+    loadMountain(x,z,r){
+
 
         // mountain loader
         const dracoLoader = new DRACOLoader()
@@ -75,6 +86,33 @@ export default class TreeModel {
                 mountain.position.y = 0
                 
                 this.scene.add(mountain)
+
+            }
+        )
+    }
+    loadCloud(x,z,y){
+
+
+        // Cloud loader
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath('/draco/')
+
+        const gltfLoader = new GLTFLoader()
+        gltfLoader.setDRACOLoader(dracoLoader)
+
+        var cloud = new THREE.Object3D();
+
+        // Cloud Model 
+        gltfLoader.load(
+            '/models/cloud/scene.gltf',
+            (gltf) => {
+
+                gltf.scene.scale.set(0.3, 0.3, 0.3)
+                cloud = gltf.scene
+                cloud.position.x = x
+                cloud.position.y = y
+                cloud.position.z = z
+                this.scene.add(cloud)
 
             }
         )

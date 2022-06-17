@@ -20,12 +20,12 @@ export default class Camere {
             10000
         )
         this.instance.position.set(0, 10, 25)
-            // this.instance.rotation.x = -Math.PI * 0.2
+        // this.instance.rotation.x = -Math.PI * 0.2
         this.scene.add(this.instance)
     }
 
     setControls() {
-        this.controls = new OrbitControls(this.instance, this.canvas)
+       this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
 
     }
