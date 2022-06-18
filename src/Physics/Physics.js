@@ -85,6 +85,8 @@ export default class Physics {
             this.acceleration()
             this.velocity()
             this.location()
+                //
+                ///
             this.time_update()
         }
 
