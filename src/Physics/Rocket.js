@@ -9,7 +9,7 @@ export default class Rocket {
         }
         instance = this
         this.structural_mass = 137000
-        this.fuel_mass = 330000 //kg    
+        this.fuel_mass = 3300000 //kg    
         this.payload_mass = 140.000
         this.full_mass = this.fuel_mass + this.structural_mass + this.payload_mass
         this.diameter = 10.1 //m
@@ -30,7 +30,7 @@ export default class Rocket {
 
     mass_change() {
         if (this.fuel_mass > 0) {
-            var dm = this.thrust.burn_rate * 0.01 //amount of mass lost in time dt
+            var dm = this.thrust.burn_rate * 0.1 //amount of mass lost in time dt
             var current_fuel_mass = this.fuel_mass - dm
             this.fuel_mass = current_fuel_mass
             this.full_mass = this.fuel_mass + this.structural_mass + this.payload_mass

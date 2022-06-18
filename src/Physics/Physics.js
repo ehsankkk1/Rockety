@@ -14,8 +14,8 @@ export default class Physics {
             return instance
         }
         instance = this
-        this.dt = 0.01
-        this.t = 0.01
+        this.dt = 0.1
+        this.t = 0.1
         this.weight = new Weight()
         this.drag = new Drag()
         this.lift = new Lift()
@@ -59,21 +59,35 @@ export default class Physics {
             // this.rocket.position.add(dd)
         this.rocket.height = this.rocket.position.y
             // console.log(this.rocket.height)
-            // console.log(this.rocket.velocity.length())
+        console.log(this.rocket.position)
             //console.log(this.rocket.position)
 
     }
     update() {
-        this.rocket.update()
-        this.weight.update()
-        this.thrust.update()
-        this.drag.update()
-        this.lift.update()
-        this.totalForce()
-        this.acceleration()
-        this.velocity()
-        this.location()
-        this.time_update()
+        if (this.t > 2, this.rocket.acceleration.y > 0) {
+            this.rocket.update()
+            this.weight.update()
+            this.thrust.update()
+            this.drag.update()
+            this.lift.update()
+            this.totalForce()
+            this.acceleration()
+            this.velocity()
+            this.location()
+            this.time_update()
+        } else if (this.t < 2) {
+            this.rocket.update()
+            this.weight.update()
+            this.thrust.update()
+            this.drag.update()
+            this.lift.update()
+            this.totalForce()
+            this.acceleration()
+            this.velocity()
+            this.location()
+            this.time_update()
+        }
+
     }
 
     time_update() {

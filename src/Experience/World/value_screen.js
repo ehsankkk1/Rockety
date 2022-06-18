@@ -22,8 +22,14 @@ export default class ValueScreen {
         document.getElementById("height").innerHTML = height;
         let speed = this.physics.rocket.velocity.length()
         document.getElementById("speed").innerHTML = speed;
-        let pressure = this.physics.atmosphere.pressure
-        document.getElementById("pressure").innerHTML = pressure;
+        let rho = this.physics.atmosphere.rho
+        document.getElementById("rho").innerHTML = rho;
+        let layer = this.physics.atmosphere.layer
+        document.getElementById("layer").innerHTML = layer;
+        let weight = this.physics.weight.weight_force.y
+        document.getElementById("weight").innerHTML = weight;
+        let gravity = this.physics.weight.current_gravity.y
+        document.getElementById("gravity").innerHTML = gravity;
         //cube.rotation.y += 0.01
     }
 }

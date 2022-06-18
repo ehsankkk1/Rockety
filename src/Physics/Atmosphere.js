@@ -12,6 +12,7 @@ export default class Atmospheric_properties {
         this.rho = 0
         this.rocket = new Rocket()
         this.rhoChange()
+        this.layer = 'Troposphere'
     }
 
     pressureChange() {
@@ -45,9 +46,27 @@ export default class Atmospheric_properties {
         this.rho = this.currentPressure / (1718 * (this.current_temprature + 459.7))
         this.rho = this.rho * 515.378818
     }
+    layerChange() {
+        if (this.rocket.height < 14500) {
+            this.layer = 'Troposphere'
+        } else if (this.rocket.height < 50000) {
+            this.layer = 'Stratosphere'
+        } else if (this.rocket.height < 85000) {
+            this.layer = 'Mesosphere'
+        } else if (this.rocket.height < 600000) {
+            this.layer = 'Thermosphere'
+        } else if (this.rocket.height < 985000) {
+            this.layer = 'Ionosphere'
+        } else if (this.rocket.height < 10000000) {
+            this.layer = 'Exosphere'
+        } else if (this.rocket.height > 10000000) {
+            this.layer = 'outside the atmosphere'
+        }
+    }
 
     update() {
         this.rhoChange()
+        this.layerChange()
             //onsole.log(this.rho)
     }
 

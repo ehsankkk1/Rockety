@@ -144,9 +144,10 @@ export default class RocketModel {
         if (mixer != null) {
             mixer.update(this.time.delta)
         }
-        rocket.position.x = this.physics.rocket.position.x / 100
-        rocket.position.y = this.physics.rocket.position.y / 100
-        rocket.position.z = this.physics.rocket.position.z / 100
+        rocket.position.x = this.physics.rocket.position.x / 1000
+        rocket.position.y = this.physics.rocket.position.y / 1000
+        rocket.position.z = this.physics.rocket.position.z / 1000
+        this.camera.instance.position.x = rocket.position.x
         this.camera.instance.position.y = rocket.position.y + 10
     }
 

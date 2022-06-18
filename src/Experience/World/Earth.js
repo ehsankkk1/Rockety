@@ -18,16 +18,16 @@ export default class Earth {
         var earthmesh = new THREE.Mesh(geometry, material);
 
         this.scene.add(earthmesh)
-        var geometry2 = new THREE.SphereGeometry(500, 32, 32)
-        var material2 = new THREE.MeshBasicMaterial({
-            map: textureLoader.load('../Earth/rzA2U.jpg'),
-            alphaMap: textureLoader.load('../Earth/ngioK.png'),
-            side: THREE.DoubleSide,
-            opacity: 0.8,
-            transparent: true,
-            depthWrite: false,
-        });
-        var cloudMesh = new THREE.Mesh(geometry2, material2)
-        earthmesh.add(cloudMesh)
+            // var geometry2 = new THREE.SphereGeometry(500, 32, 32)
+            // var material2 = new THREE.MeshBasicMaterial({
+            //     map: textureLoader.load('../Earth/rzA2U.jpg'),
+            //     alphaMap: textureLoader.load('../Earth/ngioK.png'),
+            //     side: THREE.DoubleSide,
+            //     opacity: 0.8,
+            //     transparent: true,
+            //     depthWrite: false,
+            // });
+            // var cloudMesh = new THREE.Mesh(geometry2, material2)
+            // earthmesh.add(cloudMesh)
     }
 }

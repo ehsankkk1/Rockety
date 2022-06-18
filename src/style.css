@@ -15,11 +15,11 @@ body {
     outline: none;
 }
 
- .text {
+.text {
     position: absolute;
-    top: 85%;
-    right: 1%;
-    width: 200px;
+    top: 1%;
+    right: 78%;
+    width: 250px;
     padding: 20px;
     border-radius: 4px;
     background: #000000bf;
@@ -30,4 +30,4 @@ body {
     font-weight: 100;
     font-size: 14px;
     transition: opacity 0.3s;
- }
+}
