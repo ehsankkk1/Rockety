@@ -59,7 +59,7 @@ export default class Physics {
             // this.rocket.position.add(dd)
         this.rocket.height = this.rocket.position.y
             // console.log(this.rocket.height)
-        console.log(this.rocket.position)
+        //console.log(this.rocket.position)
             //console.log(this.rocket.position)
 
     }
