@@ -60,7 +60,6 @@ export default class Enviroment {
         guiChanged();
        // Debug
        
-       
     }
     light() {
         const dirLight = new THREE.DirectionalLight(0xfffffff, 1.5);

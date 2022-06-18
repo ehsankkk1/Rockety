@@ -13,6 +13,7 @@ import ValueScreen from './World/value_screen.js';
 import Physics from '../Physics/Physics.js';
 import Debug from './Utils/Debug.js';
 import Enviroment from './World/Enviroment.js';
+import LauncherModel from './World/launcher_model.js';
 
 let instance = null
 
@@ -32,6 +33,7 @@ export default class Experience {
         this.environment = new Enviroment()
         this.world = new World()
         this.ground = new Ground()
+        this.launcher = new LauncherModel()
         this.rocket = new RocketModel()
         this.screen2 = new ValueScreen()
         this.earth = new Earth()
@@ -58,6 +60,7 @@ export default class Experience {
         this.world.update()
         this.ground.update()
         this.rocket.update()
+        this.launcher.update()
         this.tree.update()
         this.screen2.update()
         this.physics.update()

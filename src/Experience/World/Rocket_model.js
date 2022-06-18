@@ -20,8 +20,7 @@ export default class RocketModel {
 
         this.loadFire()
         this.loadRocket()
-        this.loadPlatform()
-        this.loadPad()
+
     }
     loadRocket() {
         // Rocket loader
@@ -46,8 +45,6 @@ export default class RocketModel {
             }
         )
     }
-
-
     loadFire() {
         // Fire loader
         const dracoLoader = new DRACOLoader()
@@ -87,58 +84,7 @@ export default class RocketModel {
 
 
     }
-    loadPlatform() {
-        // Platform loader
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath('/draco/')
 
-        const gltfLoader = new GLTFLoader()
-        gltfLoader.setDRACOLoader(dracoLoader)
-
-        platform = new THREE.Object3D();
-
-
-        // platform Model 
-        gltfLoader.load(
-            '/models/platform/scene.gltf',
-            (gltf) => {
-
-                gltf.scene.scale.set(0.015, 0.015, 0.015)
-                platform = gltf.scene
-                platform.position.x = -9.5
-                platform.position.z = 2
-                platform.rotation.y = 1 * Math.PI / 180;
-                this.scene.add(platform)
-
-            }
-        )
-    }
-    loadPad() {
-        // pad loader
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath('/draco/')
-
-        const gltfLoader = new GLTFLoader()
-        gltfLoader.setDRACOLoader(dracoLoader)
-
-        pad = new THREE.Object3D();
-
-
-        // pad Model 
-        gltfLoader.load(
-            '/models/landing_pad/scene.gltf',
-            (gltf) => {
-
-                gltf.scene.scale.set(8, 8, 8)
-                pad = gltf.scene
-                pad.position.x = 0
-                pad.position.z = 0
-                pad.rotation.y = 1 * Math.PI / 180;
-                this.scene.add(pad)
-
-            }
-        )
-    }
 
     update() {
         if (mixer != null) {
