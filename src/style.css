@@ -31,3 +31,18 @@ body {
     font-size: 14px;
     transition: opacity 0.3s;
 }
+.screen {
+    color:#ffffff;
+    padding: 20px;     
+    background: #0cbecebf;
+    border-radius: 15px;
+    position: fixed;     
+    top:50%;     
+    left:50%;     
+    margin-top: -100px;     
+    margin-left: -100px;     
+    height:200px;     
+    width:250px;     
+    text-align: center;
+}
+

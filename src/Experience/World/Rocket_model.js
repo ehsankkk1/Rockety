@@ -17,9 +17,10 @@ export default class RocketModel {
         this.debug = this.experience.debug
         this.time = this.experience.time
         this.physics = new Physics()
-
+     
         this.loadFire()
         this.loadRocket()
+        
 
     }
     loadRocket() {
@@ -86,6 +87,7 @@ export default class RocketModel {
     }
 
 
+
     update() {
         if (mixer != null) {
             mixer.update(this.time.delta)
@@ -95,8 +97,8 @@ export default class RocketModel {
         rocket.position.z = this.physics.rocket.position.z / 1000
         fire.position.x = this.physics.rocket.position.x / 1000
         fire.position.y = this.physics.rocket.position.y / 1000
-        fire.position.z = this.physics.rocket.position.z / 1000
-        this.camera.instance.position.x = rocket.position.x
+       fire.position.z = this.physics.rocket.position.z / 1000
+         this.camera.instance.position.x = rocket.position.x
         this.camera.instance.position.y = rocket.position.y + 10
     }
 

@@ -22,6 +22,7 @@ export default class Experience {
         if (instance) {
             return instance
         }
+        
         instance = this
         this.canvas = canvas;
         this.sizes = new Sizes();
@@ -65,4 +66,5 @@ export default class Experience {
         this.screen2.update()
         this.physics.update()
     }
+
 }
