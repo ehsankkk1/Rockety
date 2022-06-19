@@ -37,7 +37,7 @@ export default class Enviroment {
         this.debugFolder.add( effectController, 'mieCoefficient', 0.0, 0.1, 0.001 ).listen().onChange( this.guiChanged );
         this.debugFolder.add( effectController, 'mieDirectionalG', 0.0, 1, 0.001 ).listen().onChange( this.guiChanged );
         this.debugFolder.add( effectController, 'elevation', 0, 90, 0.1 ).listen().onChange( this.guiChanged );
-        this.debugFolder.add( effectController, 'azimuth', - 180, 180, 0.1 ).listen().onChange( this.guiChanged );
+        this.debugFolder.add( effectController, 'azimuth', -180, 180, 0.1 ).listen().onChange( this.guiChanged );
         //this.debug.ui.add( effectController, 'exposure', 0, 1, 0.0001 ).onChange( guiChanged );
 
         this.guiChanged();
