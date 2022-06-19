@@ -15,15 +15,26 @@ export default class ValueScreen {
         this.physics = new Physics()
 
 
-        this.startFolder.add(this.physics.rocket,"structural_mass", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"fuel_mass", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"payload_mass", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"diameter", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"height_r", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"drag_coefficient", 0.0, 20.0, 0.1 );
-        this.startFolder.add(this.physics.rocket,"lift_coefficient", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket, "structural_mass");
+        this.startFolder.add(this.physics.rocket, "fuel_mass");
+        this.startFolder.add(this.physics.rocket, "payload_mass");
+        this.startFolder.add(this.physics.rocket, "diameter");
+        this.startFolder.add(this.physics.rocket, "height_r");
+        this.startFolder.add(this.physics.rocket, "drag_coefficient");
+        this.startFolder.add(this.physics.rocket, "lift_coefficient");
+        this.startFolder.add(this.physics.thrust, "fuel_type");
+        this.startFolder.add(this.physics.thrust, "p0");
+        this.startFolder.add(this.physics.thrust, "pe");
+        this.startFolder.add(this.physics.thrust, "A_throat");
+        this.startFolder.add(this.physics.thrust, "Ae");
+        this.startFolder.add(this.physics.thrust, "burn_rate");
+        // this.startFolder.add(this.physics.rocket, "start");
+        // this.startFolder.add("button", "start")
+        var obj = { add: function() { console.log("clicked") } };
+
+        this.startFolder.add(this.experience, 'start');
         //this.startFolder.add(this.physics.rocket,"height_r", 0.0, 20.0, 0.1 );
-    
+
 
 
         text = {
@@ -45,17 +56,17 @@ export default class ValueScreen {
         document.getElementById("weight").innerHTML = weight;
         let gravity = this.physics.weight.current_gravity.y
         document.getElementById("gravity").innerHTML = gravity;
-        if (height < -1){
+        if (this.physics.rocket.velocity.y < -1) {
             document.getElementById("message").innerHTML = "Fetal Error ";
-            document.getElementById("height2").innerHTML = 0;
-            this.toggleScreen('gameover-screen',true);
+            document.getElementById("height").innerHTML = this.physics.rocket.height;
+            this.toggleScreen('gameover-screen', true);
         }
         //cube.rotation.y += 0.01
     }
 
-    toggleScreen(id,toggle) {
+    toggleScreen(id, toggle) {
         let element = document.getElementById(id);
-        let display = ( toggle ) ? 'block' : 'none';
+        let display = (toggle) ? 'block' : 'none';
         element.style.display = display;
     }
 }

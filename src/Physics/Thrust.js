@@ -31,6 +31,26 @@ export default class Thrust {
         this.physics = new Physics()
         this.angle = 90
     }
+
+    fuelChange() {
+        if (this.fuel_type == 'O2H2') {
+            this.exhaust_velocity = new Vector3(0, 4550, 0)
+            this.Tt = 3251 //K
+        } else if (this.fuel_type == 'O2RPI') {
+            this.exhaust_velocity = new Vector3(0, 3580, 0)
+            this.Tt = 3701 //K
+        } else if (this.fuel_type == 'F2H2') {
+            this.exhaust_velocity = new Vector3(0, 4790, 0)
+            this.Tt = 4258 //K
+        } else if (this.fuel_type == 'N2O4MMH') {
+            this.exhaust_velocity = new Vector3(0, 3420, 0)
+            this.Tt = 3398 //K
+        } else if (this.fuel_type == 'N2O4N2H4UDMH') {
+            this.exhaust_velocity = new Vector3(0, 3420, 0)
+            this.Tt = 3369 //K
+        }
+    }
+
     thrustForceChange() {
         if (this.rocket.fuel_mass >= 0) {
             let thrust_force = new Vector3(0, 0, 0) // should be around 33000000 N
@@ -47,6 +67,7 @@ export default class Thrust {
 
     update() {
         this.thrustForceChange()
-        //console.log(this.thrust_force)
+        this.fuelChange()
+            //console.log(this.thrust_force)
     }
 }

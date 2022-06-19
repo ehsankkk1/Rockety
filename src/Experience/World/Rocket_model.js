@@ -104,6 +104,10 @@ export default class RocketModel {
         this.camera.instance.position.y = rocket.position.y + 10
 
         rocket.rotation.y += this.physics.rocket.angle_of_attack / 1000
+        if (this.physics.rocket.fuel_mass < 0) {
+            this.scene.remove(fire)
+
+        }
     }
 
 
