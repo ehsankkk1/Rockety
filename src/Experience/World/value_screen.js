@@ -30,6 +30,17 @@ export default class ValueScreen {
         document.getElementById("weight").innerHTML = weight;
         let gravity = this.physics.weight.current_gravity.y
         document.getElementById("gravity").innerHTML = gravity;
+        if (height < -1){
+            document.getElementById("message").innerHTML = "Fetal Error ";
+            document.getElementById("height2").innerHTML = 0;
+            this.toggleScreen('gameover-screen',true);
+        }
         //cube.rotation.y += 0.01
+    }
+
+    toggleScreen(id,toggle) {
+        let element = document.getElementById(id);
+        let display = ( toggle ) ? 'block' : 'none';
+        element.style.display = display;
     }
 }
