@@ -69,7 +69,7 @@ export default class RocketModel {
                 mixer = new THREE.AnimationMixer(gltf.scene)
 
                 fire.position.x = 0
-                fire.position.y = -20
+                fire.position.y = -1.5
                 fire.rotation.x = Math.PI;
 
 
@@ -90,9 +90,9 @@ export default class RocketModel {
 
 
     update() {
-        // if (mixer != null) {
-        //     mixer.update(this.time.delta)
-        // }
+     if (mixer != null) {
+            mixer.update(this.time.delta)
+     }
         rocket.position.x = this.physics.rocket.position.x / 1000
         rocket.position.y = this.physics.rocket.position.y / 1000
         rocket.position.z = this.physics.rocket.position.z / 1000
