@@ -102,11 +102,12 @@ export default class RocketModel {
             // this.camera.instance.position.x = rocket.position.x
         this.camera.instance.position.y = rocket.position.y + 10
 
-        rocket.rotation.y += this.physics.rocket.angle_of_attack + this.physics.rocket.angular.angleTo(new Vector3(0, 1, 0))
-        rocket.rotation.x = this.physics.rocket.angular.angleTo(new Vector3(1, 0, 0)) - Math.PI / 2
+        rocket.rotation.y += this.physics.rocket.angle_of_attack
+            //  + this.physics.rocket.angular.angleTo(new Vector3(0, 1, 0))
+            // rocket.rotation.x = this.physics.rocket.angular.angleTo(new Vector3(1, 0, 0)) - Math.PI / 2
 
-        rocket.rotation.z = this.physics.rocket.angular.angleTo(new Vector3(0, 0, 1)) - Math.PI / 2
-            // rocket.rotation.z = this.physics.rocket.drag_coefficient / this.physics.rocket.lift_coefficient
+        // rocket.rotation.z = this.physics.rocket.angular.angleTo(new Vector3(0, 0, 1)) - Math.PI / 2
+        // rocket.rotation.z = this.physics.rocket.drag_coefficient / this.physics.rocket.lift_coefficient
 
         console.log(this.physics.rocket.angular.angleTo(new Vector3(0, 1, 0)) - (Math.PI / 2))
         if (this.physics.rocket.fuel_mass < 0) {

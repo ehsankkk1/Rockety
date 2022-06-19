@@ -41,7 +41,7 @@ export default class ValueScreen {
     update() {
         height = this.physics.rocket.height;
         document.getElementById("height").innerHTML = height;
-        let speed = this.physics.rocket.velocity.length()
+        let speed = this.physics.rocket.velocity.y
         document.getElementById("speed").innerHTML = speed;
         let rho = this.physics.atmosphere.rho
         document.getElementById("rho").innerHTML = rho;
@@ -51,9 +51,11 @@ export default class ValueScreen {
         document.getElementById("weight").innerHTML = weight;
         let gravity = this.physics.weight.current_gravity.y
         document.getElementById("gravity").innerHTML = gravity;
-        if (this.physics.rocket.velocity.y < -1 || this.height > 10000000) {
+        if (this.physics.rocket.velocity.y < 0 || this.height > 10000000) {
             document.getElementById("message").innerHTML = "Fetal Error ";
-            document.getElementById("height").innerHTML = this.physics.rocket.height;
+            document.getElementById("height2").innerHTML = height;
+            document.getElementById("speed2").innerHTML = speed
+            document.getElementById("layer2").innerHTML = layer;
             this.toggleScreen('gameover-screen', true);
         }
         //cube.rotation.y += 0.01

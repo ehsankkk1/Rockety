@@ -111,7 +111,7 @@ export default class Physics {
 
 
     update() {
-        if (this.t > 2 && this.rocket.velocity.y > -1 && this.atmosphere.layer != 'outside the atmosphere') {
+        if (this.t > 2 && this.rocket.velocity.y > 0 && this.atmosphere.layer != 'outside the atmosphere') {
             this.rocket.update()
             this.weight.update()
             this.thrust.update()
