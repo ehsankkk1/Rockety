@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import Experience from "../Experience.js";
-import StarrySkyShader from './StarrySkyShader.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
 import Physics from '../../Physics/Physics.js';
 
@@ -23,12 +22,12 @@ export default class Enviroment {
         sky.scale.setScalar(450000);
         this.scene.add(sky)
         effectController = {
-            turbidity: 10,
-            rayleigh: 3,
-            mieCoefficient: 0.005,
-            mieDirectionalG: 0.7,
-            elevation:5,
-            azimuth: -90,
+            turbidity: 7,
+            rayleigh: 1.1,
+            mieCoefficient: 0.035,
+            mieDirectionalG: 1,
+            elevation:18.5,//25
+            azimuth: -150,
             exposure: this.renderer.toneMappingExposure,
         };
 
@@ -46,26 +45,32 @@ export default class Enviroment {
     
     }
     update() {
-        let height = this.physics.rocket.height;
-        if (height < 14500) {
+        let height = this.physics.rocket.height ;
+        if (height < 14500 ) {
             this.check1(effectController)
-        } else if (height < 50000) {
-            effectController.rayleigh = 3
-            this.check1(effectController)
-        } else if (height < 85000) {
+        } 
+        else if (height < 50000) {
             effectController.rayleigh = 2
             this.check1(effectController)
-        } else if (height < 600000) {
-            effectController.rayleigh = 2
+        } 
+        else if (height < 85000) {
+            effectController.rayleigh = 0.35
             this.check1(effectController)
-        } else if (height < 985000) {
-            effectController.rayleigh = 1
+        } 
+        else if (height < 600000) {
+            effectController.rayleigh = 0.2
             this.check1(effectController)
-        } else if (height < 10000000) {
-            effectController.rayleigh = 0
+        }
+        else if (height < 985000) {
+            //effectController.rayleigh = 1
             this.check1(effectController)
-        } else if (height > 10000000) {
-            effectController.rayleigh = 0
+        } 
+        else if (height < 10000000) {
+            //effectController.rayleigh = 0
+            this.check1(effectController)
+        } 
+        else if (height > 10000000) {
+            //effectController.rayleigh = 0
             this.check1(effectController)
         }
     }
@@ -92,26 +97,6 @@ export default class Enviroment {
         
         uniforms['sunPosition'].value.copy(sun);
     }
-    skydome() {
-        var skyDomeRadius = 500.01;
-        var sphereMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                skyRadius: { value: skyDomeRadius },
-                env_c1: { value: new THREE.Color("#0d1a2f") },
-                env_c2: { value: new THREE.Color("#0f8682") },
-                noiseOffset: { value: new THREE.Vector3(100.01, 100.01, 100.01) },
-                starSize: { value: 0.01 },
-                starDensity: { value: 0.09 },
-                clusterStrength: { value: 0.2 },
-                clusterSize: { value: 0.2 },
-            },
-            vertexShader: StarrySkyShader.vertexShader,
-            fragmentShader: StarrySkyShader.fragmentShader,
-            side: THREE.DoubleSide,
-        })
-        var sphereGeometry = new THREE.SphereGeometry(skyDomeRadius, 20, 20);
-        var skyDome = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        this.scene.add(skyDome);
-    }
+
 
 }

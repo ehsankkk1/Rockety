@@ -5,7 +5,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import Physics from '../../Physics/Physics';
 import { Vector3 } from 'three';
 
-let rocket, fire, platform, pad;
+let rocket, fire;
 let mixer = null;
 export default class RocketModel {
 
@@ -69,7 +69,7 @@ export default class RocketModel {
                 mixer = new THREE.AnimationMixer(gltf.scene)
 
                 fire.position.x = 0
-                fire.position.y = -2
+                fire.position.y = -20
                 fire.rotation.x = Math.PI;
 
 
