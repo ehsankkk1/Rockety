@@ -18,7 +18,7 @@ import Light from './World/light.js';
 import { GUI } from 'dat.gui';
 
 let instance = null
-
+let starto=false
 export default class Experience {
     constructor(canvas) {
         if (instance) {
@@ -46,17 +46,18 @@ export default class Experience {
         this.sizes.on('resize', () => {
             this.resize()
         })
-
+        this.time.on('tick', () => {
+            this.update()
+        }) 
+      
 
 
     }
     start() {
-        this.time.on('tick', () => {
-            this.update()
-        })
-
+        console.log('start')
         this.debug.ui.destroy()
-    }
+         starto = true
+     }
     resize() {
         this.camera.resize()
         this.renderer.resize()
@@ -73,7 +74,10 @@ export default class Experience {
         this.launcher.update()
         this.tree.update()
         this.screen2.update()
-        this.physics.update()
+        if (starto == true){
+           this.physics.update() 
+        }
+        
     }
 
 }

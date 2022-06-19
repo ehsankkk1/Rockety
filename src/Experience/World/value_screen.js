@@ -30,13 +30,15 @@ export default class ValueScreen {
         this.startFolder.add(this.physics.thrust, "burn_rate");
         // this.startFolder.add(this.physics.rocket, "start");
         // this.startFolder.add("button", "start")
+        
         var obj = { add: function() { console.log("clicked") } };
 
         this.startFolder.add(this.experience, 'start');
+
         //this.startFolder.add(this.physics.rocket,"height_r", 0.0, 20.0, 0.1 );
 
 
-
+        
         text = {
                 element: document.querySelector('.text')
             }
@@ -58,7 +60,7 @@ export default class ValueScreen {
         document.getElementById("gravity").innerHTML = gravity;
         if (this.physics.rocket.velocity.y < -1) {
             document.getElementById("message").innerHTML = "Fetal Error ";
-            document.getElementById("height").innerHTML = this.physics.rocket.height;
+            document.getElementById("height2").innerHTML = this.physics.rocket.height;
             this.toggleScreen('gameover-screen', true);
         }
         //cube.rotation.y += 0.01
