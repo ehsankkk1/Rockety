@@ -15,6 +15,7 @@ import Debug from './Utils/Debug.js';
 import Enviroment from './World/Enviroment.js';
 import LauncherModel from './World/launcher_model.js';
 import Light from './World/light.js';
+import { GUI } from 'dat.gui';
 
 let instance = null
 
@@ -23,7 +24,7 @@ export default class Experience {
         if (instance) {
             return instance
         }
-        
+
         instance = this
         this.canvas = canvas;
         this.sizes = new Sizes();
@@ -33,7 +34,7 @@ export default class Experience {
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.environment = new Enviroment()
-        this.light= new Light()
+        this.light = new Light()
         this.world = new World()
         this.ground = new Ground()
         this.launcher = new LauncherModel()
@@ -46,10 +47,15 @@ export default class Experience {
             this.resize()
         })
 
+
+
+    }
+    start() {
         this.time.on('tick', () => {
             this.update()
         })
 
+        this.debug.ui.destroy()
     }
     resize() {
         this.camera.resize()
