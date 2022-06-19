@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import Physics from '../../Physics/Physics';
 
-let rocket, fire, platform, pad;
+let rocket, fire;
 let mixer = null;
 export default class RocketModel {
 
@@ -68,7 +68,7 @@ export default class RocketModel {
                 mixer = new THREE.AnimationMixer(gltf.scene)
 
                 fire.position.x = 0
-                fire.position.y = -2
+                fire.position.y = -20
                 fire.rotation.x = Math.PI;
 
 
@@ -96,10 +96,10 @@ export default class RocketModel {
         rocket.position.y = this.physics.rocket.position.y / 1000
         rocket.position.z = this.physics.rocket.position.z / 1000
         fire.position.x = this.physics.rocket.position.x / 1000
-        fire.position.y = this.physics.rocket.position.y / 1000
+        fire.position.y = (this.physics.rocket.position.y / 1000) -1.5
        fire.position.z = this.physics.rocket.position.z / 1000
-         this.camera.instance.position.x = rocket.position.x
-        this.camera.instance.position.y = rocket.position.y + 10
+       this.camera.instance.position.x = rocket.position.x
+      this.camera.instance.position.y = rocket.position.y + 10
     }
 
 
