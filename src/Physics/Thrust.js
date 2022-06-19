@@ -52,7 +52,7 @@ export default class Thrust {
     }
 
     thrustForceChange() {
-        if (this.rocket.fuel_mass >= 0) {
+        if (this.rocket.fuel_mass > 0) {
             let thrust_force = new Vector3(0, 0, 0) // should be around 33000000 N
             let mult = new Vector3(0, 0, 0)
             mult.add(this.exhaust_velocity)
