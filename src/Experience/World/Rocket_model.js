@@ -104,7 +104,6 @@ export default class RocketModel {
         this.camera.instance.position.y = rocket.position.y + 10
 
         rocket.rotation.y += this.physics.rocket.angle_of_attack
-            //rocket.rotation.X += 0.5
     }
 
 

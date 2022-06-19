@@ -9,7 +9,7 @@ export default class Thrust {
             return instance
         }
         instance = this
-        this.exhaust_velocity = new Vector3(0, 2386, 0) //2.1 to 3.2 km/s  for solid propellants
+        this.exhaust_velocity = new Vector3(0, 4550, 0) //2.1 to 3.2 km/s  for solid propellants
         this.thrust_time = 192.6
         this.burn_rate = 12890 // kg per sec
         this.A_throat = 8 // nozzle throat area
