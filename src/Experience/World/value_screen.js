@@ -10,7 +10,22 @@ export default class ValueScreen {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.debug = this.experience.debug
+        this.startFolder = this.debug.ui.addFolder('start values')
         this.physics = new Physics()
+
+
+        this.startFolder.add(this.physics.rocket,"structural_mass", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"fuel_mass", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"payload_mass", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"diameter", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"height_r", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"drag_coefficient", 0.0, 20.0, 0.1 );
+        this.startFolder.add(this.physics.rocket,"lift_coefficient", 0.0, 20.0, 0.1 );
+        //this.startFolder.add(this.physics.rocket,"height_r", 0.0, 20.0, 0.1 );
+    
+
+
         text = {
                 element: document.querySelector('.text')
             }
@@ -30,6 +45,17 @@ export default class ValueScreen {
         document.getElementById("weight").innerHTML = weight;
         let gravity = this.physics.weight.current_gravity.y
         document.getElementById("gravity").innerHTML = gravity;
+        if (height < -1){
+            document.getElementById("message").innerHTML = "Fetal Error ";
+            document.getElementById("height2").innerHTML = 0;
+            this.toggleScreen('gameover-screen',true);
+        }
         //cube.rotation.y += 0.01
+    }
+
+    toggleScreen(id,toggle) {
+        let element = document.getElementById(id);
+        let display = ( toggle ) ? 'block' : 'none';
+        element.style.display = display;
     }
 }

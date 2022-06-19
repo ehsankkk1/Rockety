@@ -105,7 +105,7 @@ export default class Physics {
         angular.copy(this.rocket.angularVelocity)
         angular.multiplyScalar(this.dt)
         this.rocket.angular.add(angular)
-        console.log(this.rocket.angular)
+        //console.log(this.rocket.angular)
 
     }
 

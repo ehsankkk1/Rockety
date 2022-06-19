@@ -47,6 +47,6 @@ export default class Thrust {
 
     update() {
         this.thrustForceChange()
-        console.log(this.thrust_force)
+        //console.log(this.thrust_force)
     }
 }
