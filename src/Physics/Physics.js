@@ -62,7 +62,7 @@ export default class Physics {
             // console.log(this.rocket.height)
             //console.log(this.rocket.position)
             //console.log(this.rocket.acceleration)
-            // console.log(this.rocket.velocity)
+            // console.log(this.rocket.velocity.)
             // console.log(this.rocket.velocity.angleTo(new Vector3(1, 0, 0)))
 
         //console.log(this.rocket.position)
@@ -82,7 +82,7 @@ export default class Physics {
         f.addVectors(this.drag.drag, this.lift.lift)
         let angle = f.angleTo(new Vector3(0, 1, 0))
         this.rocket.angle_of_attack = angle
-        if (this.rocket.velocity.y < 7900) {
+        if (this.rocket.velocity.y < 10000) {
             var matrix = new THREE.Matrix4()
             matrix.makeRotationY(-angle)
             this.rocket.position.applyMatrix4(matrix)

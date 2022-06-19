@@ -9,33 +9,33 @@ export default class NatureModel {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
-        for(let i=0;i<50;i++) {
+        for (let i = 0; i < 50; i++) {
             const angle = Math.random() * Math.PI * 2 // Random angle
-            const radius = 10 + Math.random() * 50  
-            const x = Math.cos(angle) * radius        // Get the x position using cosinus
-            const z = Math.sin(angle) * radius 
-            this.loadTree(x,z);
-      
+            const radius = 10 + Math.random() * 50
+            const x = Math.cos(angle) * radius // Get the x position using cosinus
+            const z = Math.sin(angle) * radius
+            this.loadTree(x, z);
+
 
         }
-        this.loadMountain(0,-80,180)
-        this.loadMountain(80,-0,90)
-        this.loadMountain(0,80,180)
-        this.loadMountain(-80,0,90)
-        //this.loadMountain(-50,-90)
-        for(let i=0;i<1000;i++){
+        this.loadMountain(0, -80, 180)
+        this.loadMountain(80, -0, 90)
+        this.loadMountain(0, 80, 180)
+        this.loadMountain(-80, 0, 90)
+            //this.loadMountain(-50,-90)
+        for (let i = 0; i < 80; i++) {
             const angle = Math.random() * Math.PI * 2 // Random angle
-            const radius = 30 + Math.random() * 80  
-            const radius2  = 100 + Math.random() * 10000      // Random radius
-            const x = Math.cos(angle) * radius        // Get the x position using cosinus
+            const radius = Math.random() * 80
+            const radius2 = 20 + Math.random() * 60 // Random radius
+            const x = Math.cos(angle) * radius // Get the x position using cosinus
             const z = Math.sin(angle) * radius // Get the z position using sinus
-            const y = radius2       
-            this.loadCloud(x,z,y)   
+            const y = radius2
+            this.loadCloud(x, z, y)
         }
-        
+
 
     }
-    loadTree(x, z){
+    loadTree(x, z) {
 
         // Tree loader
         const dracoLoader = new DRACOLoader()
@@ -60,7 +60,7 @@ export default class NatureModel {
             }
         )
     }
-    loadMountain(x,z,r){
+    loadMountain(x, z, r) {
 
 
         // mountain loader
@@ -74,7 +74,7 @@ export default class NatureModel {
 
         // mountain Model 
         gltfLoader.load(
-            
+
             '/models/mountain/scene.gltf',
             (gltf) => {
 
@@ -82,15 +82,15 @@ export default class NatureModel {
                 mountain = gltf.scene
                 mountain.position.x = x
                 mountain.position.z = z
-                mountain.rotation.y = r*Math.PI/180;
+                mountain.rotation.y = r * Math.PI / 180;
                 mountain.position.y = 0
-                
+
                 this.scene.add(mountain)
 
             }
         )
     }
-    loadCloud(x,z,y){
+    loadCloud(x, z, y) {
 
 
         // Cloud loader

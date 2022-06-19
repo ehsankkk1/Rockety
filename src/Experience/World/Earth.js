@@ -7,7 +7,7 @@ export default class Earth {
         this.scene = this.experience.scene
         const textureLoader = new THREE.TextureLoader()
 
-        var geometry = new THREE.SphereGeometry(10000, 32, 32);
+        var geometry = new THREE.SphereGeometry(100000, 32, 32);
         var material = new THREE.MeshPhongMaterial({
             map: textureLoader.load('../Earth/diffuse.jpg'),
             bumpMap: textureLoader.load('../Earth/bump.png'),
@@ -19,7 +19,7 @@ export default class Earth {
         var earthmesh = new THREE.Mesh(geometry, material);
 
         this.scene.add(earthmesh)
-        //this.skydome();
+            //this.skydome();
             // var geometry2 = new THREE.SphereGeometry(500, 32, 32)
             // var material2 = new THREE.MeshBasicMaterial({
             //     map: textureLoader.load('../Earth/rzA2U.jpg'),

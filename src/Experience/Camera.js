@@ -19,7 +19,7 @@ export default class Camere {
             0.1,
             100000
         )
-        this.instance.position.set(0, 10, 25)
+        this.instance.position.set(0, 5, 10)
             // this.instance.rotation.x = -Math.PI * 0.2
         this.scene.add(this.instance)
     }
