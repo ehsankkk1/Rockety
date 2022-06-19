@@ -9,9 +9,9 @@ export default class Thrust {
             return instance
         }
         instance = this
-        this.exhaust_velocity = new Vector3(0, 4550, 0) //2.1 to 3.2 km/s  for solid propellants
-        this.thrust_time = 0.1
-        this.burn_rate = 1289 // kg per sec
+        this.exhaust_velocity = new Vector3(0, 2386, 0) //2.1 to 3.2 km/s  for solid propellants
+        this.thrust_time = 192.6
+        this.burn_rate = 12890 // kg per sec
         this.A_throat = 8 // nozzle throat area
         this.Ae = 4.55 //m^2  nozzle exit area
         this.pt = 680000 // pascal  (pressure inside burning room)
@@ -29,7 +29,7 @@ export default class Thrust {
         this.p_v = this.rocket.velocity
         this.p_m = this.rocket.full_mass
         this.physics = new Physics()
-
+        this.angle = 90
     }
     thrustForceChange() {
         if (this.rocket.fuel_mass >= 0) {
@@ -37,8 +37,8 @@ export default class Thrust {
             let mult = new Vector3(0, 0, 0)
             mult.add(this.exhaust_velocity)
             mult.multiplyScalar(this.m_dot)
-                // thrust_force.multiplyScalar((this.pe - this.p0) * this.Ae)
             thrust_force.add(mult)
+            thrust_force.addScalar((this.pe - this.p0) * this.Ae)
             this.thrust_force = thrust_force //it varies depending on the pressure on the nozzle between 32608372 and 33100000
         } else {
             this.thrust_force = new Vector3(0, 0, 0)
@@ -47,5 +47,6 @@ export default class Thrust {
 
     update() {
         this.thrustForceChange()
+        console.log(this.thrust_force)
     }
 }

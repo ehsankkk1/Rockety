@@ -1,5 +1,6 @@
 import * as THREE from 'three'
-import { Clock, Vector3 } from 'three'
+import { Vector3 } from 'three';
+
 import Weight from './Weight'
 import Drag from './Drag'
 import Lift from './Lift'
@@ -60,7 +61,11 @@ export default class Physics {
         this.rocket.height = this.rocket.position.y
             // console.log(this.rocket.height)
             //console.log(this.rocket.position)
-            //console.log(this.rocket.position)
+            //console.log(this.rocket.acceleration)
+            // console.log(this.rocket.velocity)
+            // console.log(this.rocket.velocity.angleTo(new Vector3(1, 0, 0)))
+
+        //console.log(this.rocket.position)
 
     }
 
@@ -73,47 +78,81 @@ export default class Physics {
         this.rocket.angularAcc.copy(angular_acc)
     }
     applyTorque() {
-
-        let angle = this.total_force.angleTo(new Vector3(0, 1, 0))
+        let f = new Vector3(0, 0, 0)
+        f.addVectors(this.drag.drag, this.lift.lift)
+        let angle = f.angleTo(new Vector3(0, 1, 0))
         this.rocket.angle_of_attack = angle
-        if (this.rocket.velocity.y < 7900 && angle != 0.) {
-            angle = this.total_force.angleTo(new Vector3(0, 1, 0))
+        if (this.rocket.velocity.y < 7900) {
             var matrix = new THREE.Matrix4()
-            matrix.makeRotationY(180 - angle)
+            matrix.makeRotationY(-angle)
             this.rocket.position.applyMatrix4(matrix)
         }
-        console.log(this.lift.lift)
+
+
+        // console.log(angle)
 
     }
 
+    angularAcceleration() {
+        this.rocket.angularAcceleration.copy(this.rocket.acceleration)
+        this.rocket.angularAcceleration.divideScalar((this.rocket.diameter / 2))
+        let angularVelocity = new Vector3()
+        angularVelocity.copy(this.rocket.angularAcceleration)
+        angularVelocity.multiplyScalar(this.dt)
+        this.rocket.angularVelocity.add(angularVelocity)
+
+        let angular = new Vector3()
+        angular.copy(this.rocket.angularVelocity)
+        angular.multiplyScalar(this.dt)
+        this.rocket.angular.add(angular)
+        console.log(this.rocket.angular)
+
+    }
+
+
     update() {
-        if (this.t > 2 && this.rocket.velocity.y > 0 && this.atmosphere.layer != 'outside the atmosphere') {
-            this.rocket.update()
-            this.weight.update()
-            this.thrust.update()
-            this.drag.update()
-            this.lift.update()
-            this.totalForce()
-            this.acceleration()
-            this.velocity()
-            this.location()
-            this.time_update()
-                //this.angularAcc()
-            this.applyTorque()
-        } else if (this.t < 2) {
-            this.rocket.update()
-            this.weight.update()
-            this.thrust.update()
-            this.drag.update()
-            this.lift.update()
-            this.totalForce()
-            this.acceleration()
-            this.velocity()
-            this.location()
-                //this.angularAcc()
-            this.applyTorque()
-            this.time_update()
-        }
+        // if (this.t > 2 && this.rocket.velocity.y > 0 && this.atmosphere.layer != 'outside the atmosphere') {
+        //     this.rocket.update()
+        //     this.weight.update()
+        //     this.thrust.update()
+        //     this.drag.update()
+        //     this.lift.update()
+        //     this.totalForce()
+        //     this.acceleration()
+        //     this.velocity()
+        //     this.location()
+        //     this.time_update()
+        //     this.angularAcc()
+        //     this.applyTorque()
+        //     this.angularAcceleration()
+        // } else if (this.t < 2) {
+        //     this.rocket.update()
+        //     this.weight.update()
+        //     this.thrust.update()
+        //     this.drag.update()
+        //     this.lift.update()
+        //     this.totalForce()
+        //     this.acceleration()
+        //     this.velocity()
+        //     this.location()
+        //     this.angularAcc()
+        //     this.applyTorque()
+        //     this.time_update()
+        //         //this.angularAcceleration()
+        // }
+        this.rocket.update()
+        this.weight.update()
+        this.thrust.update()
+        this.drag.update()
+        this.lift.update()
+        this.totalForce()
+        this.acceleration()
+        this.velocity()
+        this.location()
+        this.time_update()
+        this.angularAcc()
+        this.applyTorque()
+        this.angularAcceleration()
 
     }
 

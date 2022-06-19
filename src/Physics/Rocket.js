@@ -9,8 +9,8 @@ export default class Rocket {
         }
         instance = this
         this.structural_mass = 137000
-        this.fuel_mass = 33000 //kg    
-        this.payload_mass = 140.000
+        this.fuel_mass = 3300000 //kg    
+        this.payload_mass = 140000
         this.full_mass = this.fuel_mass + this.structural_mass + this.payload_mass
         this.diameter = 10.1 //m
         this.height_r = 110.6 //m
@@ -27,6 +27,10 @@ export default class Rocket {
         this.angle_of_attack = 0
         this.angularAcc = new Vector3(0, 0, 0)
         this.thrust = new Thrust()
+        this.angularAcceleration = new Vector3()
+        this.angularVelocity = new Vector3()
+        this.angular = new Vector3()
+        this.angle1 = 90
         this.mass_change()
     }
 

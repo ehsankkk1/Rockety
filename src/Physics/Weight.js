@@ -12,6 +12,7 @@ export default class Weight {
         this.earth = new Earth()
         this.weight_force = new Vector3(0, -1 * this.rocket.full_mass * this.earth.gravity_on_surface.length(), 0)
         this.current_gravity = this.earth.gravity_on_surface
+        this.angle = 270
     }
     weight_forceChange() {
         var weight_force = new Vector3(0, -1, 0)
