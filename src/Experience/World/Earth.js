@@ -6,7 +6,7 @@ export default class Earth {
         this.scene = this.experience.scene
         const textureLoader = new THREE.TextureLoader()
 
-        var geometry = new THREE.SphereGeometry(600, 32, 32);
+        var geometry = new THREE.SphereGeometry(10000, 32, 32);
         var material = new THREE.MeshPhongMaterial({
             map: textureLoader.load('../Earth/diffuse.jpg'),
             bumpMap: textureLoader.load('../Earth/bump.png'),

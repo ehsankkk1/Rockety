@@ -59,12 +59,35 @@ export default class Physics {
             // this.rocket.position.add(dd)
         this.rocket.height = this.rocket.position.y
             // console.log(this.rocket.height)
-        console.log(this.rocket.position)
+            //console.log(this.rocket.position)
             //console.log(this.rocket.position)
 
     }
+
+    angularAcc() {
+        let angular_acc = new Vector3()
+        angular_acc.copy(this.drag.drag)
+        angular_acc.add(this.lift.lift)
+        let div = this.rocket.full_mass
+        angular_acc.divideScalar(div * (this.rocket.diameter / 2))
+        this.rocket.angularAcc.copy(angular_acc)
+    }
+    applyTorque() {
+
+        let angle = this.total_force.angleTo(new Vector3(0, 1, 0))
+        this.rocket.angle_of_attack = angle
+        if (this.rocket.velocity.y < 7900 && angle != 0.) {
+            angle = this.total_force.angleTo(new Vector3(0, 1, 0))
+            var matrix = new THREE.Matrix4()
+            matrix.makeRotationY(180 - angle)
+            this.rocket.position.applyMatrix4(matrix)
+        }
+        console.log(this.lift.lift)
+
+    }
+
     update() {
-        if (this.t > 2, this.rocket.acceleration.y > 0) {
+        if (this.t > 2 && this.rocket.velocity.y > 0 && this.atmosphere.layer != 'outside the atmosphere') {
             this.rocket.update()
             this.weight.update()
             this.thrust.update()
@@ -75,6 +98,8 @@ export default class Physics {
             this.velocity()
             this.location()
             this.time_update()
+                //this.angularAcc()
+            this.applyTorque()
         } else if (this.t < 2) {
             this.rocket.update()
             this.weight.update()
@@ -85,8 +110,8 @@ export default class Physics {
             this.acceleration()
             this.velocity()
             this.location()
-                //
-                ///
+                //this.angularAcc()
+            this.applyTorque()
             this.time_update()
         }
 

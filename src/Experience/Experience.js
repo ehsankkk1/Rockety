@@ -13,6 +13,8 @@ import ValueScreen from './World/value_screen.js';
 import Physics from '../Physics/Physics.js';
 import Debug from './Utils/Debug.js';
 import Enviroment from './World/Enviroment.js';
+import LauncherModel from './World/launcher_model.js';
+import Light from './World/light.js';
 
 let instance = null
 
@@ -21,6 +23,7 @@ export default class Experience {
         if (instance) {
             return instance
         }
+        
         instance = this
         this.canvas = canvas;
         this.sizes = new Sizes();
@@ -30,8 +33,10 @@ export default class Experience {
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.environment = new Enviroment()
+        this.light= new Light()
         this.world = new World()
         this.ground = new Ground()
+        this.launcher = new LauncherModel()
         this.rocket = new RocketModel()
         this.screen2 = new ValueScreen()
         this.earth = new Earth()
@@ -56,10 +61,13 @@ export default class Experience {
         this.environment.update()
         this.renderer.update()
         this.world.update()
+        this.light.update()
         this.ground.update()
         this.rocket.update()
+        this.launcher.update()
         this.tree.update()
         this.screen2.update()
         this.physics.update()
     }
+
 }

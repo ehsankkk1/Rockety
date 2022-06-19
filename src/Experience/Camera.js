@@ -17,7 +17,7 @@ export default class Camere {
             60,
             this.sizes.width / this.sizes.height,
             0.1,
-            10000
+            100000
         )
         this.instance.position.set(0, 10, 25)
             // this.instance.rotation.x = -Math.PI * 0.2

@@ -23,10 +23,10 @@ export default class NatureModel {
         this.loadMountain(0,80,180)
         this.loadMountain(-80,0,90)
         //this.loadMountain(-50,-90)
-        for(let i=0;i<25;i++){
+        for(let i=0;i<1000;i++){
             const angle = Math.random() * Math.PI * 2 // Random angle
             const radius = 30 + Math.random() * 80  
-            const radius2  = 100 + Math.random() * 500      // Random radius
+            const radius2  = 100 + Math.random() * 10000      // Random radius
             const x = Math.cos(angle) * radius        // Get the x position using cosinus
             const z = Math.sin(angle) * radius // Get the z position using sinus
             const y = radius2       
