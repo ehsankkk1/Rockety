@@ -68,7 +68,6 @@ export default class Physics {
         //console.log(this.rocket.position)
 
     }
-
     angularAcc() {
         let angular_acc = new Vector3()
         angular_acc.copy(this.drag.drag)
@@ -82,7 +81,7 @@ export default class Physics {
         f.addVectors(this.drag.drag, this.lift.lift)
         let angle = f.angleTo(new Vector3(0, 1, 0))
         this.rocket.angle_of_attack = angle
-        if (this.rocket.velocity.y < 10000) {
+        if (this.rocket.velocity.y < 7900) {
             var matrix = new THREE.Matrix4()
             matrix.makeRotationY(-angle)
             this.rocket.position.applyMatrix4(matrix)
@@ -112,7 +111,7 @@ export default class Physics {
 
     update() {
         if (this.t > 2 && this.rocket.velocity.y > 0 && this.atmosphere.layer != 'outside the atmosphere') {
-            this.rocket.update()
+            this.rocket.update()   
             this.weight.update()
             this.thrust.update()
             this.drag.update()
@@ -138,7 +137,7 @@ export default class Physics {
             this.angularAcc()
             this.applyTorque()
             this.time_update()
-                //this.angularAcceleration()
+            this.angularAcceleration()
         }
         // this.rocket.update()
         // this.weight.update()

@@ -64,7 +64,7 @@ export default class Enviroment {
             //effectController.rayleigh = 0
             this.check1(effectController)
         } else if (height > 10000000) {
-            //effectController.rayleigh = 0
+            effectController.rayleigh = 0
             this.check1(effectController)
         }
     }

@@ -34,7 +34,6 @@ export default class RocketModel {
 
         rocket = new THREE.Object3D();
 
-
         // Rocket Model 
         gltfLoader.load(
             '/models/rocket/scene.gltf',
@@ -43,6 +42,7 @@ export default class RocketModel {
                 gltf.scene.scale.set(0.08, 0.08, 0.08)
                 rocket = gltf.scene
                 this.scene.add(rocket)
+
             }
         )
     }
@@ -95,24 +95,15 @@ export default class RocketModel {
         rocket.position.x = this.physics.rocket.position.x / 100
         rocket.position.y = this.physics.rocket.position.y / 100
         rocket.position.z = this.physics.rocket.position.z / 100
-            //this.camera.instance.position.x = rocket.position.x
         fire.position.x = this.physics.rocket.position.x / 100
         fire.position.y = this.physics.rocket.position.y / 100 - 1.5
-        fire.position.z = this.physics.rocket.position.z / 100
-            // this.camera.instance.position.x = rocket.position.x
+        fire.position.z = this.physics.rocket.position.z / 100 
+        this.camera.instance.position.x = rocket.position.x /2
         this.camera.instance.position.y = rocket.position.y + 10
+        rocket.rotation.y += this.physics.rocket.angle_of_attack /100
 
-        rocket.rotation.y += this.physics.rocket.angle_of_attack
-            //  + this.physics.rocket.angular.angleTo(new Vector3(0, 1, 0))
-            // rocket.rotation.x = this.physics.rocket.angular.angleTo(new Vector3(1, 0, 0)) - Math.PI / 2
-
-        // rocket.rotation.z = this.physics.rocket.angular.angleTo(new Vector3(0, 0, 1)) - Math.PI / 2
-        // rocket.rotation.z = this.physics.rocket.drag_coefficient / this.physics.rocket.lift_coefficient
-
-        console.log(this.physics.rocket.angular.angleTo(new Vector3(0, 1, 0)) - (Math.PI / 2))
         if (this.physics.rocket.fuel_mass < 0) {
             this.scene.remove(fire)
-
         }
     }
 

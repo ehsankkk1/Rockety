@@ -51,8 +51,21 @@ export default class ValueScreen {
         document.getElementById("weight").innerHTML = weight;
         let gravity = this.physics.weight.current_gravity.y
         document.getElementById("gravity").innerHTML = gravity;
-        if (this.physics.rocket.velocity.y < 0 || this.height > 10000000) {
+        if (this.physics.rocket.velocity.y < 0 ) {
             document.getElementById("message").innerHTML = "Fetal Error ";
+            document.getElementById("height2").innerHTML = height;
+            document.getElementById("speed2").innerHTML = speed
+            if (height < 0){
+                document.getElementById("height2").innerHTML = 0;
+            }
+            if (speed < 0 ){
+                document.getElementById("speed2").innerHTML = 0
+            }
+            document.getElementById("layer2").innerHTML = layer;
+            this.toggleScreen('gameover-screen', true);
+        }
+        if(height > 10000000){
+            document.getElementById("message").innerHTML = "END of the Simulation ";
             document.getElementById("height2").innerHTML = height;
             document.getElementById("speed2").innerHTML = speed
             document.getElementById("layer2").innerHTML = layer;

@@ -3,7 +3,8 @@ import Rocket from "./Rocket"
 import { Vector3 } from "three"
 
 let instance = null
-
+const IAMCONST = 'constValue'
+const PI = 3.14
 export default class Drag {
     constructor() {
         if (instance) {

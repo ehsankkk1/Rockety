@@ -53,13 +53,13 @@ export default class Thrust {
 
     thrustForceChange() {
         if (this.rocket.fuel_mass > 0) {
-            let thrust_force = new Vector3(0, 0, 0) // should be around 33000000 N
+            let thrust_force = new Vector3(0, 0, 0) 
             let mult = new Vector3(0, 0, 0)
             mult.add(this.exhaust_velocity)
             mult.multiplyScalar(this.m_dot)
             thrust_force.add(mult)
             thrust_force.addScalar((this.pe - this.p0) * this.Ae)
-            this.thrust_force = thrust_force //it varies depending on the pressure on the nozzle between 32608372 and 33100000
+            this.thrust_force = thrust_force 
         } else {
             this.thrust_force = new Vector3(0, 0, 0)
         }
