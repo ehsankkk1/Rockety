@@ -1,0 +1,11 @@
+Model Information:
+* title:	Saturn V - NASA
+* source:	https://sketchfab.com/3d-models/saturn-v-nasa-7a2c9709ff8144c8b3b18ec84b5e112e
+* author:	Stanley Creative (https://sketchfab.com/Stanley_Creative)
+
+Model License:
+* license type:	CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)
+* requirements:	Author must be credited. Modified versions can not be distributed. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Saturn V - NASA" (https://sketchfab.com/3d-models/saturn-v-nasa-7a2c9709ff8144c8b3b18ec84b5e112e) by Stanley Creative (https://sketchfab.com/Stanley_Creative) licensed under CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)
