@@ -1,0 +1,11 @@
+Model Information:
+* title:	Temporary Ladder Harbour
+* source:	https://sketchfab.com/3d-models/temporary-ladder-harbour-5dbcfc6eb2424084adddf96ffafae9e8
+* author:	Laulet (https://sketchfab.com/Laulet)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Temporary Ladder Harbour" (https://sketchfab.com/3d-models/temporary-ladder-harbour-5dbcfc6eb2424084adddf96ffafae9e8) by Laulet (https://sketchfab.com/Laulet) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

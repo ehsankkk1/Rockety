@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pine Tree - Proto Series - Free
+* source:	https://sketchfab.com/3d-models/pine-tree-proto-series-free-08014e92a59244c992884091218230b8
+* author:	BitGem (https://sketchfab.com/bitgem)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pine Tree - Proto Series - Free" (https://sketchfab.com/3d-models/pine-tree-proto-series-free-08014e92a59244c992884091218230b8) by BitGem (https://sketchfab.com/bitgem) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
