@@ -26,7 +26,7 @@ export default class Camere {
 
     setControls() {
         //this.controls = new OrbitControls(this.instance, this.canvas)
-       // this.controls.enableDamping = true
+        //this.controls.enableDamping = true
 
     }
     resize() {
