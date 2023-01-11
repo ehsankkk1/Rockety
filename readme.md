@@ -10,21 +10,6 @@ In addition to the interactive rocket simulation, the project also includes educ
 
 Overall, our Three.js Rocket project is a unique and engaging experience that combines the power of Three.js with the realism of physics repository, providing users with an interactive and educational exploration of rocket physics.
 
-
-## Setup
-Download [Node.js](https://nodejs.org/en/download/).
-Run this followed commands:
-
-``` bash
-# Install dependencies (only the first time)
-npm install
-
-# Run the local server at localhost:8080
-npm run dev
-
-# Build for production in the dist/ directory
-npm run build
-```
 #  simulation preview
 
 ![photo_2022-12-23 09 38 05](https://user-images.githubusercontent.com/102434828/209379096-07d91cc9-9eea-4c8e-bb38-acc270104e3d.jpeg)
