@@ -19,11 +19,11 @@ Overall, our Three.js Rocket project is a unique and engaging experience that co
 
 CONTRIBUTORS:
 
-Ehsan Abourshaed
+[Ehsan Abourshaed](https://github.com/ehsankkk1)
 
-Johny Kodsy
+[Johny Kodsy](https://github.com/johnykoudsy)
 
-Rita Rezeq
+[Rita Rezeq](https://github.com/RitaRezeq)
 
 Esraa Abo Srour
 
